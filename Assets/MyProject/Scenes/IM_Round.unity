@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17276844, g: 0.2158925, b: 0.29782635, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276797, g: 0.21589167, b: 0.29782546, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 174018861}
   - component: {fileID: 174018860}
   - component: {fileID: 174018859}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Pole (11)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -1702,7 +1702,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 494ebee6ac0bf1159bd641070c50be38, type: 2}
+  - {fileID: 2100000, guid: 4f942dce550b14aebbacc050d8ff99b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1744,7 +1744,7 @@ GameObject:
   - component: {fileID: 283074418}
   - component: {fileID: 283074417}
   - component: {fileID: 283074416}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pole (8)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -3290,7 +3290,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 494ebee6ac0bf1159bd641070c50be38, type: 2}
+  - {fileID: 2100000, guid: 4f942dce550b14aebbacc050d8ff99b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5005,7 +5005,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 494ebee6ac0bf1159bd641070c50be38, type: 2}
+  - {fileID: 2100000, guid: 4f942dce550b14aebbacc050d8ff99b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5557,7 +5557,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 494ebee6ac0bf1159bd641070c50be38, type: 2}
+  - {fileID: 2100000, guid: 4f942dce550b14aebbacc050d8ff99b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5810,7 +5810,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae9f2a9ceb5c44c391022e7f8bec784f, type: 3}
   m_Name: 
@@ -6292,7 +6292,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 494ebee6ac0bf1159bd641070c50be38, type: 2}
+  - {fileID: 2100000, guid: 4f942dce550b14aebbacc050d8ff99b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6400,7 +6400,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e86938eeef9c48f1f8e5df4718e5dc87, type: 2}
+  - {fileID: 2100000, guid: bc6d9b5f495c94ac18204f10c0b784df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13847,7 +13847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 10
+  DecisionPeriod: 1
   TakeActionsBetweenDecisions: 1
 --- !u!114 &1358828248
 MonoBehaviour:
@@ -13864,7 +13864,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 1000
+  MaxStep: 0
   speed: 450
   rotSpeed: 6
   defaultDrag: 0
@@ -16249,7 +16249,7 @@ GameObject:
   - component: {fileID: 1592685020}
   - component: {fileID: 1592685019}
   - component: {fileID: 1592685018}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Pole (12)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -16640,7 +16640,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 494ebee6ac0bf1159bd641070c50be38, type: 2}
+  - {fileID: 2100000, guid: 4f942dce550b14aebbacc050d8ff99b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18148,7 +18148,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908855138}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae9f2a9ceb5c44c391022e7f8bec784f, type: 3}
   m_Name: 
@@ -19354,7 +19354,7 @@ GameObject:
   - component: {fileID: 1935224181}
   - component: {fileID: 1935224180}
   - component: {fileID: 1935224179}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Pole (9)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -19451,7 +19451,7 @@ GameObject:
   - component: {fileID: 2005084101}
   - component: {fileID: 2005084100}
   - component: {fileID: 2005084099}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pole (10)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -19548,7 +19548,7 @@ GameObject:
   - component: {fileID: 2026284107}
   - component: {fileID: 2026284106}
   - component: {fileID: 2026284105}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Pole (13)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -19970,7 +19970,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c09959c8cf37fdaa682f89dac525314d, type: 2}
+  - {fileID: 2100000, guid: 207c54cc4bdeca8c39f988591f6dbe8c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
