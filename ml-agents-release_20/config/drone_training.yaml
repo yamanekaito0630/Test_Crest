@@ -1,0 +1,26 @@
+behaviors:
+  DroneAgent:
+    trainer_type: ppo # トレーニングアルゴリズムにPPO(Proximal Policy Optimization)を使用
+    hyperparameters:
+      batch_size: 128 # バッチサイズ
+      buffer_size: 2048 # 経験リプレイバッファのサイズ
+      learning_rate: 3.0e-5 # 学習率
+      beta: 0.01 # KLダイバージェンスの目標値
+      epsilon: 0.2 # PPOのクリッピングパラメータ
+      lambd: 0.95 # GAE(Generalized Advantage Estimation)のλパラメータ
+      num_epoch: 3 # エポック数
+      learning_rate_schedule: linear # 学習率のスケジューリング方法
+    network_settings:
+      normalize: false # 入力の正規化を行わない
+      hidden_units: 1024 # 隠れ層のユニット数
+      num_layers: 3 # 隠れ層の数
+    reward_signals:
+      extrinsic:
+        gamma: 0.99 # 報酬の割引率
+        strength: 1.0 # 報酬の重み付け
+    keep_checkpoints: 5 # 保存するチェックポイントの数
+    max_steps: 5.0e5 # トレーニングの最大ステップ数
+    time_horizon: 128 # トレーニング時の時間ステップの最大数
+    summary_freq: 10000 # サマリーを出力する頻度
+    threaded: true # 並列トレーニングを有効にする
+
