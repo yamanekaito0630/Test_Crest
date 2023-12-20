@@ -102,7 +102,7 @@ public class PlayerIM_Round : Agent
     // 速度類似度
     private float k6 = 0.0f;
     // 姿勢の制御
-    private float k7 = 1.0f;
+    private float k7 = 0.002f;
 
     public override void Initialize()
     {

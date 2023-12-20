@@ -44,13 +44,13 @@
      <Folder Include="ml-agents-release_20/com.unity.ml-agents/Tests/Runtime/Utils" />
      <None Include="ml-agents-release_20/com.unity.ml-agents/Tests/Runtime/Utils/Unity.ML-Agents.Runtime.Utils.Tests.asmdef" />
      <Reference Include="UnityEngine">
-     <HintPath>/home/usr4/yamane/Unity/Hub/Editor/2021.3.30f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
+     <HintPath>/Applications/Unity/Hub/Editor/2021.3.30f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.CoreModule">
-     <HintPath>/home/usr4/yamane/Unity/Hub/Editor/2021.3.30f1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
+     <HintPath>/Applications/Unity/Hub/Editor/2021.3.30f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor">
-     <HintPath>/home/usr4/yamane/Unity/Hub/Editor/2021.3.30f1/Editor/Data/Managed/UnityEngine/UnityEditor.dll</HintPath>
+     <HintPath>/Applications/Unity/Hub/Editor/2021.3.30f1/Unity.app/Contents/Managed/UnityEngine/UnityEditor.dll</HintPath>
      </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -424,7 +424,7 @@ class BaseTorchSolution(BaseSolution):
         comm.barrier()
         # Unity環境の生成
         channel = EngineConfigurationChannel()
-        channel.set_configuration_parameters(time_scale=20, width=10, height=10)
+        channel.set_configuration_parameters(time_scale=20, width=100, height=100)
         self.env = UnityEnvironment(file_name=self.file_name, no_graphics=False, side_channels=[channel],
                                     worker_id=rank, seed=seed)
         self.init_run()
@@ -615,7 +615,7 @@ class PIAttentionAgent(BaseTorchSolution):
         )
         action = output.squeeze(0).cpu().numpy()
         action = self.action_scale(actions=action)
-        
+
         gc.collect()
         return action
 
@@ -904,7 +904,7 @@ class AttentionAgent(BaseTorchSolution):
             )
         self.hx = self.lstm(centers.unsqueeze(0), self.hx)
         output = self.output_fc(self.hx[0]).squeeze(0)
-        
+
         gc.collect()
         return output.cpu().numpy()
 
@@ -995,7 +995,7 @@ class AttentionAgent(BaseTorchSolution):
             # importance = math.floor(255 - (255 / 100) * patches_importance_vector[ix])
             importance = 255
 
-            
+
             black_img[row_ss:row_ee, col_ss:col_ee] = sub_img[row_ss:row_ee, col_ss:col_ee]
             img[row_ss:row_ee, col_ss:col_ee] = (
                 ratio * img[row_ss:row_ee, col_ss:col_ee] + (1 - ratio) * attention_patch * [255, importance, 0])

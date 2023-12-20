@@ -42,7 +42,7 @@ def main(config, log_dir, n_at, n_robo, n_version):
     agent = PIAttentionAgent(
         device=device,
         file_name=file_name,
-        act_dim=3,
+        act_dim=5,
         msg_dim=16,
         pos_em_dim=8,
         patch_size=6,

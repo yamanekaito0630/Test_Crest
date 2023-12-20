@@ -8,6 +8,7 @@ from permutation_invariant.solutions_mpi_evojax import PIAttentionAgent, PIFCSol
 
 def parse_args():
     parser = argparse.ArgumentParser()
+    parser.add_argument('--os', help='Mac or Linux', type=str, default="Linux")
     parser.add_argument('--t', help='Num of loop', type=int, default=1)
     parser.add_argument('--base', help='piaa, pifc, aa', default='piaa')
     parser.add_argument('--version', help='Number of attenpt', type=int, default=1)
@@ -33,13 +34,18 @@ def main(config):
     device = torch.device('cpu')
     if config.base == 'piaa':
         if config.n_robo == 1:
-            file_name = 'apps/UnderWaterDrones_IM_Round_OneRobot_At{}'.format(config.n_at)
+            file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os,
+                                                                                                   config.n_at,
+                                                                                                   config.version)
         else:
-            file_name = 'apps/UnderWaterDrones_IM_Round_{}Robots_At{}'.format(config.n_robo, config.n_at)
+            file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os,
+                                                                                                   config.n_robo,
+                                                                                                   config.n_at,
+                                                                                                   config.version)
         agent = PIAttentionAgent(
             device=device,
             file_name=file_name,
-            act_dim=3,
+            act_dim=5,
             msg_dim=16,
             pos_em_dim=8,
             patch_size=6,
@@ -51,9 +57,14 @@ def main(config):
         )
     elif config.base == 'aa':
         if config.n_robo == 1:
-            file_name = 'apps/UnderWaterDrones_IM_Round_OneRobot_At{}'.format(config.n_at)
+            file_name = 'Test_Crest_App/{}/apps/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os,
+                                                                                                    config.n_at,
+                                                                                                    config.version)
         else:
-            file_name = 'apps/UnderWaterDrones_IM_Round_{}Robots_At{}'.format(config.n_robo, config.n_at)
+            file_name = 'Test_Crest_App/{}/apps/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os,
+                                                                                                    config.n_robo,
+                                                                                                    config.n_at,
+                                                                                                    config.version)
         agent = AttentionAgent(
             device=device,
             file_name=file_name,
@@ -69,7 +80,7 @@ def main(config):
         agent = PIFCSolution(
             device=device,
             file_name=file_name,
-            act_dim=5,
+            act_dim=3,
             hidden_dim=64,
             msg_dim=16,
             pos_em_dim=8,
@@ -93,9 +104,14 @@ def main(config):
 
 
 if __name__ == '__main__':
-    # 仮想ディスプレイの使用
-    d = Display()
-    d.start()
     args = parse_args()
+    d = Display()
+
+    if args.os == "Linux":
+        # 仮想ディスプレイの使用
+        d.start()
+
     main(args)
-    d.stop()
+
+    if args.os == "Linux":
+        d.stop()
