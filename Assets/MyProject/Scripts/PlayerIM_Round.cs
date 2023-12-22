@@ -244,6 +244,11 @@ public class PlayerIM_Round : Agent
         {
             targetAreaValue = 0.0f;
         }
+
+        if (other.CompareTag("DangerArea"))
+        {
+            collisionValue = 0.0f;
+        }
     }
     
     public void OnCollisionStay(Collision other)
@@ -327,13 +332,22 @@ public class PlayerIM_Round : Agent
         {
             frontLED.GetComponent<Renderer>().material.color = Color.red;
         }
+        else if(collisionValue == 1.0f)
+        {
+            frontLED.GetComponent<Renderer>().material.color = Color.blue;
+        }
         else
         {
             frontLED.GetComponent<Renderer>().material.color = Color.gray;
         }
+
         if (targetAreaValue == 1.0f)
         {
             backLED.GetComponent<Renderer>().material.color = Color.red;
+        }
+        else if(collisionValue == 1.0f)
+        {
+            backLED.GetComponent<Renderer>().material.color = Color.blue;
         }
         else
         {
