@@ -22,6 +22,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--n-at', help='Num of attempt', type=int, default=5)
     parser.add_argument('--ns-robo', required=True, nargs="*", help='Num list of robo', type=int)
+    parser.add_argument('--es-robo', required=True, nargs="*", help='Num list of eval robo', type=int)
     parser.add_argument('--versions', required=True, nargs="*", help='Num list of versions', type=int)
     parser.add_argument('--load-model', help='Select model file', default='Iter_1000.npz')
     parser.add_argument('--n-fitness', help='Num of Fitness', type=int, default=4)
@@ -32,17 +33,20 @@ def parse_args():
     return config
 
 
-def main(config, log_dir, n_at, n_robo, n_version):
-    device = torch.device('cpu')
-    file_name = 'render_apps/UnderWaterDrones_IM_Round_{}Robots_At{}'.format(n_robo, n_at)
+def main(config, log_dir, n_at, e_robo, n_version):
+    save_path = log_dir + 'eval_{}robo/'.format(e_robo)
+    if not os.path.exists(save_path):
+        os.makedirs(save_path)
 
-    if n_robo == 1:
+    device = torch.device('cpu')
+    file_name = 'render_apps/UnderWaterDrones_IM_Round_{}Robots_At{}'.format(e_robo, n_at)
+    if e_robo == 1:
         file_name = 'render_apps/UnderWaterDrones_IM_Round_OneRobot_At{}'.format(n_at)
 
     agent = PIAttentionAgent(
         device=device,
         file_name=file_name,
-        act_dim=5,
+        act_dim=3,
         msg_dim=16,
         pos_em_dim=8,
         patch_size=6,
@@ -104,12 +108,12 @@ def main(config, log_dir, n_at, n_robo, n_version):
         print('steps:', counter)
         if counter % config.steps == 0:
             robots_coordinates = np.array([xs, ys, zs])
-            pickle.dump(robots_coordinates, open(log_dir + 'robots_coordinates_{}.pkl'.format(n_recode), 'wb'))
-            u.coordinates_heatmap_creator(path=log_dir, coordinates=robots_coordinates, n_recode=n_recode)
+            pickle.dump(robots_coordinates, open(save_path + 'robots_coordinates_{}.pkl'.format(n_recode), 'wb'))
+            u.coordinates_heatmap_creator(path=save_path, coordinates=robots_coordinates, n_recode=n_recode)
 
             apm = (rss, gss, bss, impss)
-            pickle.dump(apm, open(log_dir + 'ap_material_{}.pkl'.format(n_recode), 'wb'))
-            u.at_scatter_creator(path=log_dir, n_recode=n_recode, apm=apm)
+            pickle.dump(apm, open(save_path + 'ap_material_{}.pkl'.format(n_recode), 'wb'))
+            u.at_scatter_creator(path=save_path, n_recode=n_recode, apm=apm)
 
             n_recode += 1
             env.reset()
@@ -135,19 +139,25 @@ if __name__ == '__main__':
         d.start()
 
     for n_version in args.versions:
+        print('v1-----------------------------')
         for n_robo in args.ns_robo:
+            print('n_robo={}-----------------------------'.format(n_robo))
             log_dir = "log/at{}/round_im_{}_robo_slurm_at{}/".format(args.n_at, n_robo, args.n_at)
 
             while not os.path.isfile(log_dir + args.load_model):
                 print(log_dir + args.load_model + " is not exist.")
                 time.sleep(5)
 
-            main(args, log_dir, args.n_at, n_robo, n_version)
+            for e_robo in args.es_robo:
+                print('eval_robo={}-----------------------------'.format(e_robo))
+                main(args, log_dir, args.n_at, e_robo, n_version)
 
-            res_1 = subprocess.run("sh recode_pi_behave.sh {} {} {}".format(args.n_at, n_robo, n_version), shell=True)
-            print("res_1:", res_1.returncode)
-            res_2 = subprocess.run("sh recode_pi_attention.sh {} {} {}".format(args.n_at, n_robo, n_version), shell=True)
-            print("res_2:", res_2.returncode)
+                res_1 = subprocess.run(
+                    "sh recode_pi_behave.sh {} {} {} {}".format(args.n_at, n_robo, n_version, e_robo), shell=True)
+                print("res_1:", res_1.returncode)
+                res_2 = subprocess.run(
+                    "sh recode_pi_attention.sh {} {} {} {}".format(args.n_at, n_robo, n_version, e_robo), shell=True)
+                print("res_2:", res_2.returncode)
 
     if args.headless:
         d.stop()

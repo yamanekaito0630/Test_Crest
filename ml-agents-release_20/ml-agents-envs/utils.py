@@ -37,15 +37,15 @@ def at_scatter_creator(path, n_recode, apm, fontsize=23):
     r, g, b, imp = apm
     fig = plt.figure(figsize=(10, 10))
     ax = fig.add_subplot(projection='3d')
-    #scatter = ax.scatter(r, g, b,
-    #                     s=1,
-    #                     c=imp,
-    #                     cmap='viridis',
-    #                     norm=mcolors.LogNorm())
     scatter = ax.scatter(r, g, b,
                          s=1,
                          c=imp,
-                         cmap='viridis')
+                         cmap='viridis',
+                         norm=mcolors.LogNorm())
+    # scatter = ax.scatter(r, g, b,
+    #                      s=1,
+    #                      c=imp,
+    #                      cmap='viridis')
 
     ax.set_xlabel('Red', rotation=None, labelpad=15, fontsize=fontsize)
     ax.set_ylabel('Green', rotation=None, labelpad=15, fontsize=fontsize)
@@ -59,6 +59,7 @@ def at_scatter_creator(path, n_recode, apm, fontsize=23):
     cbar = plt.colorbar(scatter, shrink=0.7, pad=0.1)
     cbar.set_label('Importance', fontsize=fontsize)
     plt.savefig(path + 'at_scatter_{}.png'.format(n_recode))
+
 
 for i in [16]:
     for j in range(5):

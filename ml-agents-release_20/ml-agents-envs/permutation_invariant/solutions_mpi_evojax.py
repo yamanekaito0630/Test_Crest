@@ -735,8 +735,6 @@ class PIAttentionAgent(BaseTorchSolution):
         save_path = path + 'attention_gui'
         if path and not os.path.exists(save_path):
             os.makedirs(save_path)
-        if path and not os.path.exists(path + 'attention_movie'):
-            os.makedirs(path + 'attention_movie')
         # cv2.imwrite(save_path + '/img_' + str(counter) + '.png', img)
         cv2.imshow('render', img)
         cv2.waitKey(1)
@@ -744,8 +742,6 @@ class PIAttentionAgent(BaseTorchSolution):
         save_path = path + 'attention_black_gui'
         if path and not os.path.exists(save_path):
             os.makedirs(save_path)
-        if path and not os.path.exists(path + 'attention_black_movie'):
-            os.makedirs(path + 'attention_black_movie')
         # cv2.imwrite(save_path + '/img_' + str(counter) + '.png', black_img)
         cv2.imshow('render', black_img)
         cv2.waitKey(1)

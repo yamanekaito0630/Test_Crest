@@ -14,7 +14,7 @@ def parse_args():
     parser.add_argument('--version', help='Number of attenpt', type=int, default=1)
     parser.add_argument('--n-at', help='Number of attenpt', type=int, default=5)
     parser.add_argument('--n-robo', help='Number of robots', type=int, default=2)
-    parser.add_argument('--n-fitness', help='Number of fitness', type=int, default=6)
+    parser.add_argument('--n-fitness', help='Number of fitness', type=int, default=7)
     parser.add_argument('--log-dir', help='Path to log directory.', default='log/marine_drones_12robo')
     parser.add_argument('--load-model', help='Path to model file.', default=None)
     parser.add_argument('--algo', help='Select Algorithms (cma, open_es, ga, pepg)', type=str, default="cma")
@@ -45,7 +45,7 @@ def main(config):
         agent = PIAttentionAgent(
             device=device,
             file_name=file_name,
-            act_dim=5,
+            act_dim=3,
             msg_dim=16,
             pos_em_dim=8,
             patch_size=6,
