@@ -90,19 +90,19 @@ public class PlayerIM_Round : Agent
     private float fitness7;
 
     // ターゲットに近づくため
-    private float k1 = 0.0f;
+    private float k1 = 0.0002f;
     // 未実装
     private float k2 = 0.0f;
     // ターゲットに到達時
-    private float k3 = 1.0f;
+    private float k3 = 2.0f;
     // 衝突時
     private float k4 = 0.0055f;
     // 群れるため
-    private float k5 = 0.0f;
+    private float k5 = 0.03f;
     // 速度類似度
-    private float k6 = 0.0f;
+    private float k6 = 0.04f;
     // 姿勢の制御
-    private float k7 = 0.002f;
+    private float k7 = 0.00f;
 
     public override void Initialize()
     {
@@ -225,14 +225,15 @@ public class PlayerIM_Round : Agent
             {
                 AddReward(1.0f * k5);
                 fitness5 += 1.0f * k5;
+                Debug.Log("boid!!");
 
                 // Debug.Log(other.transform.parent.GetComponent<Rigidbody>().velocity);
-                vSim = CosineSimilarity(other.transform.parent.GetComponent<Rigidbody>().velocity, playerRb.velocity);
+                vSim = CosineSimilarity(other.transform.parent.GetComponent<Rigidbody>().transform.forward, playerRb.transform.forward);
                 if (!Double.IsNaN(vSim))
                 {
                     AddReward(vSim * k6);
                     fitness6 += vSim * k6;
-                    // Debug.Log(vSim);
+                     Debug.Log(vSim);
                 }
             }
         }
@@ -307,8 +308,8 @@ public class PlayerIM_Round : Agent
         float horizontalInput = Mathf.Abs(actions.ContinuousActions[0]);
         float verticalInput = actions.ContinuousActions[1];
         float rotYInput = actions.ContinuousActions[2];
-        float rotXInput = actions.ContinuousActions[3];
-        float rotZInput = actions.ContinuousActions[4];
+        // float rotXInput = actions.ContinuousActions[3];
+        // float rotZInput = actions.ContinuousActions[4];
 
         // float redInput = actions.ContinuousActions[3];
         // float blueInput = actions.ContinuousActions[4];
@@ -360,8 +361,8 @@ public class PlayerIM_Round : Agent
             verticalInput = 0.0f;
             horizontalInput = 0.0f;
             rotYInput = 0.0f;
-            rotXInput = 0.0f;
-            rotZInput = 0.0f;
+            // rotXInput = 0.0f;
+            // rotZInput = 0.0f;
 
             // rightFrontInput = 0.0f;
             // leftFrontInput = 0.0f;
@@ -374,8 +375,8 @@ public class PlayerIM_Round : Agent
         playerRb.AddForce(transform.forward * horizontalInput * speed);
         playerRb.AddForce(transform.up * verticalInput * speed);
         transform.rotation = Quaternion.AngleAxis(rotYInput * rotSpeed, Vector3.up) * transform.rotation;
-        transform.rotation = Quaternion.AngleAxis(rotXInput * rotSpeed, Vector3.right) * transform.rotation;
-        transform.rotation = Quaternion.AngleAxis(rotZInput * rotSpeed, Vector3.forward) * transform.rotation;
+        // transform.rotation = Quaternion.AngleAxis(rotXInput * rotSpeed, Vector3.right) * transform.rotation;
+        // transform.rotation = Quaternion.AngleAxis(rotZInput * rotSpeed, Vector3.forward) * transform.rotation;
 
         float postureReward = (1.0f / (Mathf.Abs(playerRb.transform.rotation.eulerAngles.x) + 1.0f)) + (1.0f / (playerRb.transform.rotation.eulerAngles.z + 1.0f));
         AddReward(postureReward * k7);
@@ -474,8 +475,8 @@ public class PlayerIM_Round : Agent
         continuousAct[0] = horizontalInput;
         continuousAct[1] = verticalInput;
         continuousAct[2] = rotYInput;
-        continuousAct[3] = rotXInput;
-        continuousAct[4] = rotYInput;
+        // continuousAct[3] = rotXInput;
+        // continuousAct[4] = rotYInput;
 
         // continuousAct[3] = redInput;
         // continuousAct[4] = blueInput;
