@@ -90,17 +90,17 @@ public class PlayerIM_Round : Agent
     private float fitness7;
 
     // ターゲットに近づくため
-    private float k1 = 0.0002f;
+    private float k1 = 0.0f;
     // 未実装
     private float k2 = 0.0f;
     // ターゲットに到達時
-    private float k3 = 2.0f;
+    private float k3 = 1.0f;
     // 衝突時
     private float k4 = 0.0055f;
     // 群れるため
     private float k5 = 0.000003f;
     // 速度類似度
-    private float k6 = 0.001f;
+    private float k6 = 0.0001f;
     // 姿勢の制御
     private float k7 = 0.00f;
 
