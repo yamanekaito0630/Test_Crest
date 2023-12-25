@@ -98,9 +98,9 @@ public class PlayerIM_Round : Agent
     // 衝突時
     private float k4 = 0.0055f;
     // 群れるため
-    private float k5 = 0.03f;
+    private float k5 = 0.000003f;
     // 速度類似度
-    private float k6 = 0.04f;
+    private float k6 = 0.001f;
     // 姿勢の制御
     private float k7 = 0.00f;
 
