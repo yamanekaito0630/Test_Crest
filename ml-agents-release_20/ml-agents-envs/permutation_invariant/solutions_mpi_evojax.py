@@ -426,7 +426,7 @@ class BaseTorchSolution(BaseSolution):
         channel = EngineConfigurationChannel()
         channel.set_configuration_parameters(time_scale=20, width=100, height=100)
         self.env = UnityEnvironment(file_name=self.file_name, no_graphics=False, side_channels=[channel],
-                                    worker_id=rank, seed=seed)
+                                    worker_id=rank+1, seed=seed)
         self.init_run()
 
         for n_iter in range(from_iter - 1, max_iter):
@@ -735,14 +735,14 @@ class PIAttentionAgent(BaseTorchSolution):
         save_path = path + 'attention_gui'
         if path and not os.path.exists(save_path):
             os.makedirs(save_path)
-        # cv2.imwrite(save_path + '/img_' + str(counter) + '.png', img)
+        cv2.imwrite(save_path + '/img_' + str(counter) + '.png', img)
         cv2.imshow('render', img)
         cv2.waitKey(1)
 
         save_path = path + 'attention_black_gui'
         if path and not os.path.exists(save_path):
             os.makedirs(save_path)
-        # cv2.imwrite(save_path + '/img_' + str(counter) + '.png', black_img)
+        cv2.imwrite(save_path + '/img_' + str(counter) + '.png', black_img)
         cv2.imshow('render', black_img)
         cv2.waitKey(1)
         gc.collect()
