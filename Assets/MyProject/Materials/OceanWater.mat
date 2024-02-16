@@ -89,7 +89,7 @@ Material:
     - _ApplyNormalMapping: 1
     - _BumpScale: 1
     - _Caustics: 1
-    - _CausticsDepthOfField: 0.33
+    - _CausticsDepthOfField: 1000
     - _CausticsDistortionScale: 25
     - _CausticsDistortionStrength: 0.16
     - _CausticsFocalDepth: 2
@@ -145,13 +145,13 @@ Material:
     - _Specular: 0.7
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _SubSurfaceBase: 4
+    - _SubSurfaceBase: 2.45
     - _SubSurfaceDepthMax: 7.6
     - _SubSurfaceDepthPower: 3.44
     - _SubSurfaceScattering: 1
     - _SubSurfaceShallowColour: 0
     - _SubSurfaceSun: 10
-    - _SubSurfaceSunFallOff: 1
+    - _SubSurfaceSunFallOff: 16
     - _Transparency: 1
     - _UVSec: 0
     - _Underwater: 1

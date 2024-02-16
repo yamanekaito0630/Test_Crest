@@ -388,15 +388,15 @@ public class PlayerIM_Round : Agent
         playerRb.AddForce(transform.up * verticalInput * speed);
 
         Vector3 localAngle = this.transform.localRotation.eulerAngles;
-        if (xRot > 80.0f)
+        if (xRot > 40.0f)
         {
             rotXInput = 0.0f;
-            xRot = 80.0f;
+            xRot = 40.0f;
         }
-        else if (xRot < -80.0f)
+        else if (xRot < -40.0f)
         {
             rotXInput = 0.0f;
-            xRot = -80.0f;
+            xRot = -40.0f;
         }
         if (zRot > 30.0f)
         {
@@ -503,8 +503,8 @@ public class PlayerIM_Round : Agent
         // デフォルトの入力
         float horizontalInput = Input.GetAxis("Vertical");
         float verticalInput = Input.GetKey(KeyCode.Space) ? 1.0f : 0.0f;
-        float rotYInput = Input.GetAxis("Horizontal");
-        float rotXInput = 0.0f;
+        float rotYInput = 0.0f;
+        float rotXInput = Input.GetAxis("Horizontal");
         float rotZInput = 0.0f;
 
         float redInput = 1.0f;
