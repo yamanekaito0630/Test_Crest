@@ -98,11 +98,16 @@ public class PlayerIM_Round : Agent
     // 衝突時
     private float k4 = 0.0055f;
     // 群れるため
-    private float k5 = 0.000003f;
+    private float k5 = 0.00000f;
     // 速度類似度
-    private float k6 = 0.0001f;
+    private float k6 = 0.00f;
     // 姿勢の制御
     private float k7 = 0.00f;
+
+    private float xRot = 0.0f;
+    private float yRot = 0.0f;
+    private float zRot = 0.0f;
+
 
     public override void Initialize()
     {
@@ -160,6 +165,9 @@ public class PlayerIM_Round : Agent
 
         // エピソード開始時に水中ドローンに初期推進力を与える
         // playerRb.AddForce(transform.TransformDirection(new Vector3(0, 200.0f, 200.0f)));
+        xRot = 0.0f;
+        yRot = 0.0f;
+        zRot = 0.0f;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -198,6 +206,7 @@ public class PlayerIM_Round : Agent
             if (cptCount % 2 == 1)
             {
                 targetAreaValue = 1.0f;
+                Debug.Log("check1");
             }
             // EndEpisode();
         }
@@ -207,17 +216,19 @@ public class PlayerIM_Round : Agent
             if (cptCount % 2 == 0)
             {
                 targetAreaValue = 1.0f;
+                Debug.Log("check2");
             }
             // EndEpisode();
         }
 
-        if (other.CompareTag("DangerArea"))
-        {
-            // 衝突ペナルティの計算
-            AddReward(-1.0f * k4);
-            fitness4 += -1.0f * k4;
-            collisionValue = 1.0f;
-        }
+        //  危険区域を設けた場合
+        // if (other.CompareTag("DangerArea"))
+        // {
+        //     // 衝突ペナルティの計算
+        //     AddReward(-1.0f * k4);
+        //     fitness4 += -1.0f * k4;
+        //     collisionValue = 1.0f;
+        // }
 
         if (other.CompareTag("BoidOut"))
         {
@@ -308,8 +319,8 @@ public class PlayerIM_Round : Agent
         float horizontalInput = Mathf.Abs(actions.ContinuousActions[0]);
         float verticalInput = actions.ContinuousActions[1];
         float rotYInput = actions.ContinuousActions[2];
-        // float rotXInput = actions.ContinuousActions[3];
-        // float rotZInput = actions.ContinuousActions[4];
+        float rotXInput = actions.ContinuousActions[3];
+        float rotZInput = actions.ContinuousActions[4];
 
         // float redInput = actions.ContinuousActions[3];
         // float blueInput = actions.ContinuousActions[4];
@@ -329,31 +340,32 @@ public class PlayerIM_Round : Agent
         // rightFrontInput = -0.15f;
         // leftFrontInput = -0.15f;
         
-        if (targetAreaValue == 1.0f)
-        {
-            frontLED.GetComponent<Renderer>().material.color = Color.red;
-        }
-        else if(collisionValue == 1.0f)
-        {
-            frontLED.GetComponent<Renderer>().material.color = Color.blue;
-        }
-        else
-        {
-            frontLED.GetComponent<Renderer>().material.color = Color.gray;
-        }
+        // LEDの点灯
+        // if (targetAreaValue == 1.0f)
+        // {
+        //     frontLED.GetComponent<Renderer>().material.color = Color.red;
+        // }
+        // else if(collisionValue == 1.0f)
+        // {
+        //     frontLED.GetComponent<Renderer>().material.color = Color.blue;
+        // }
+        // else
+        // {
+        //     frontLED.GetComponent<Renderer>().material.color = Color.gray;
+        // }
 
-        if (targetAreaValue == 1.0f)
-        {
-            backLED.GetComponent<Renderer>().material.color = Color.red;
-        }
-        else if(collisionValue == 1.0f)
-        {
-            backLED.GetComponent<Renderer>().material.color = Color.blue;
-        }
-        else
-        {
-            backLED.GetComponent<Renderer>().material.color = Color.gray;
-        }
+        // if (targetAreaValue == 1.0f)
+        // {
+        //     backLED.GetComponent<Renderer>().material.color = Color.red;
+        // }
+        // else if(collisionValue == 1.0f)
+        // {
+        //     backLED.GetComponent<Renderer>().material.color = Color.blue;
+        // }
+        // else
+        // {
+        //     backLED.GetComponent<Renderer>().material.color = Color.gray;
+        // }
         
 
         if (isAboveOcean)
@@ -361,8 +373,8 @@ public class PlayerIM_Round : Agent
             verticalInput = 0.0f;
             horizontalInput = 0.0f;
             rotYInput = 0.0f;
-            // rotXInput = 0.0f;
-            // rotZInput = 0.0f;
+            rotXInput = 0.0f;
+            rotZInput = 0.0f;
 
             // rightFrontInput = 0.0f;
             // leftFrontInput = 0.0f;
@@ -374,10 +386,45 @@ public class PlayerIM_Round : Agent
 
         playerRb.AddForce(transform.forward * horizontalInput * speed);
         playerRb.AddForce(transform.up * verticalInput * speed);
-        transform.rotation = Quaternion.AngleAxis(rotYInput * rotSpeed, Vector3.up) * transform.rotation;
+
+        Vector3 localAngle = this.transform.localRotation.eulerAngles;
+        if (xRot > 40.0f)
+        {
+            rotXInput = 0.0f;
+            xRot = 40.0f;
+        }
+        else if (xRot < -40.0f)
+        {
+            rotXInput = 0.0f;
+            xRot = -40.0f;
+        }
+        if (zRot > 30.0f)
+        {
+            rotZInput = 0.0f;
+            zRot = 30.0f;
+        } else if (zRot < -30.0f)
+        {
+            rotZInput = 0.0f;
+            zRot = -30.0f;
+        }
+        localAngle.x = xRot;
+        localAngle.y = yRot;
+        localAngle.z = zRot;
+        transform.localEulerAngles = localAngle;
+
+        xRot += rotXInput * rotSpeed;
+        yRot += rotYInput * rotSpeed;
+        zRot += rotZInput * rotSpeed;
+
+
+        //  X軸角度
+        // Vector3 localAngle = transform.localEulerAngles;
+        // localAngle.x = rotXInput * 90.0f;
+        // transform.eulerAngles = localAngle;
+
         // transform.rotation = Quaternion.AngleAxis(rotXInput * rotSpeed, Vector3.right) * transform.rotation;
         // transform.rotation = Quaternion.AngleAxis(rotZInput * rotSpeed, Vector3.forward) * transform.rotation;
-
+        
         float postureReward = (1.0f / (Mathf.Abs(playerRb.transform.rotation.eulerAngles.x) + 1.0f)) + (1.0f / (playerRb.transform.rotation.eulerAngles.z + 1.0f));
         AddReward(postureReward * k7);
         fitness7 += postureReward * k7;
@@ -456,8 +503,8 @@ public class PlayerIM_Round : Agent
         // デフォルトの入力
         float horizontalInput = Input.GetAxis("Vertical");
         float verticalInput = Input.GetKey(KeyCode.Space) ? 1.0f : 0.0f;
-        float rotYInput = Input.GetAxis("Horizontal");
-        float rotXInput = 0.0f;
+        float rotYInput = 0.0f;
+        float rotXInput = Input.GetAxis("Horizontal");
         float rotZInput = 0.0f;
 
         float redInput = 1.0f;
@@ -475,8 +522,8 @@ public class PlayerIM_Round : Agent
         continuousAct[0] = horizontalInput;
         continuousAct[1] = verticalInput;
         continuousAct[2] = rotYInput;
-        // continuousAct[3] = rotXInput;
-        // continuousAct[4] = rotYInput;
+        continuousAct[3] = rotXInput;
+        continuousAct[4] = rotZInput;
 
         // continuousAct[3] = redInput;
         // continuousAct[4] = blueInput;

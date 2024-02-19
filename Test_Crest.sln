@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crest", "Crest.csproj", "{6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{738a0fb4-833e-7425-b440-a3fd8717ffb6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{99130920-c768-052c-c33a-6cc9bab32e3e}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crest.Helpers.Editor", "Crest.Helpers.Editor.csproj", "{8aaea2cc-29ac-c0af-5428-13d1609dec42}"
 EndProject
 Global
@@ -16,6 +18,8 @@ Global
 		{62590648-faa6-3d1e-4051-3f2553284b0e}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{738a0fb4-833e-7425-b440-a3fd8717ffb6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{738a0fb4-833e-7425-b440-a3fd8717ffb6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99130920-c768-052c-c33a-6cc9bab32e3e}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99130920-c768-052c-c33a-6cc9bab32e3e}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8aaea2cc-29ac-c0af-5428-13d1609dec42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8aaea2cc-29ac-c0af-5428-13d1609dec42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
