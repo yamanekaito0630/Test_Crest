@@ -80,6 +80,9 @@ def main(config, log_dir, n_robo, e_robo):
                     each_reward = each_reward + terminal_steps.obs[1][j][:config.n_fitness]
                 n_arrival = each_reward[2] / len(terminal_steps.agent_id)
 
+                if not os.path.exists(log_dir + 'eval_{}robo'.format(e_robo)):
+                    os.makedirs(log_dir + 'eval_{}robo'.format(e_robo))
+
                 if not os.path.isfile(log_dir + 'eval_{}robo/one_robot_arrivals.txt'.format(e_robo)):
                     os.path.join(log_dir, 'eval_{}robo/one_robot_arrivals.txt'.format(e_robo))
 
