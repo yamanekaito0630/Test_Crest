@@ -37,13 +37,13 @@ def main(config):
         for n_attempt in config.ns_attempt:
             if config.base == 'piaa':
                 if n_robo == 1:
-                    file_name = 'apps/UnderWaterDrones_IM_Round_OneRobot_At{}'.format(config.n_at)
+                    file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, config.n_at, config.version)
                 else:
-                    file_name = 'apps/UnderWaterDrones_IM_Round_{}Robots_At{}'.format(n_robo, config.n_at)
+                    file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, n_robo, config.n_at, config.version)
                 agent = PIAttentionAgent(
                     device=device,
                     file_name=file_name,
-                    act_dim=3,
+                    act_dim=5,
                     msg_dim=16,
                     pos_em_dim=8,
                     patch_size=6,
@@ -54,15 +54,10 @@ def main(config):
                     aa_top_k=50
                 )
             elif config.base == 'aa':
-                if config.n_robo == 1:
-                    file_name = 'Test_Crest_App/{}/apps/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os,
-                                                                                                            config.n_at,
-                                                                                                            config.version)
+                if n_robo == 1:
+                    file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IR_Round_OneRobot_At{}_V{}'.format(config.os, config.n_at, config.version)
                 else:
-                    file_name = 'Test_Crest_App/{}/apps/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os,
-                                                                                                            config.n_robo,
-                                                                                                            config.n_at,
-                                                                                                            config.version)
+                    file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IR_Round_{}Robots_At{}_V{}'.format(config.os, n_robo, config.n_at, config.version)
                 agent = AttentionAgent(
                     device=device,
                     file_name=file_name,
@@ -85,7 +80,7 @@ def main(config):
                     num_hidden_layers=2
                 )
 
-            log_dir = 'log/at{}/{}robo/attempt_{}'.format(config.n_at, n_robo, n_attempt)
+            log_dir = 'log/at{}/{}robo/v{}/attempt_{}'.format(config.n_at, n_robo, config.version, n_attempt)
             agent.train(
                 t=config.t,
                 base=config.base,

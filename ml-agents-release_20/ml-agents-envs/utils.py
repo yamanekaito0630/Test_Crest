@@ -107,7 +107,7 @@ def z_t_creator(path, n_recode, coordinates, n_robo, fontsize=64, width=3):
     t = np.linspace(1, 1000, 999)
 
     _, z, _ = coordinates / 9.2
-    fig = plt.figure(figsize=(15, 13))
+    fig = plt.figure(figsize=(18, 13))
     ax = fig.add_subplot(1, 1, 1)
     ax.tick_params(length=9, width=width)
     ax.spines["top"].set_linewidth(width)

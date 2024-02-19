@@ -12,14 +12,16 @@ from mlagents_envs.side_channel.engine_configuration_channel import EngineConfig
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--n-at', help='Num of attempt', type=int, default=5)
+    parser.add_argument('--n-at', help='Num of attempt', type=int, default=4)
+    parser.add_argument('--version', help='App version', type=int, default=1)
+    parser.add_argument('--trials', required=True, nargs="*", help='Set of trial', type=int)
     parser.add_argument('--ns-robo', required=True, nargs="*", help='Num list of robo', type=int)
     parser.add_argument('--es-robo', required=True, nargs="*", help='Num list of eval robo', type=int)
     parser.add_argument('--load-model', help='Path to model file.', default='Iter_1000.npz')
     parser.add_argument('--n-fitness', help='Number of fitness', type=int, default=4)
-    parser.add_argument('--num-eval', help='Number of eval', type=int, default=50)
+    parser.add_argument('--num-eval', help='Number of eval', type=int, default=10)
     parser.add_argument('--worker-id', help='Worker Id', type=int, default=0)
-    parser.add_argument('--headless', help='True or False', type=int, default=0)
+    parser.add_argument('--headless', help='True or False', type=int, default=1)
     config, _ = parser.parse_known_args()
     return config
 
@@ -78,16 +80,16 @@ def main(config, log_dir, n_robo, e_robo):
                     each_reward = each_reward + terminal_steps.obs[1][j][:config.n_fitness]
                 n_arrival = each_reward[2] / len(terminal_steps.agent_id)
 
-                if not os.path.isfile(config.log_dir + 'eval_{}robo/n_one_robot_arrivals.txt'.format(e_robo)):
-                    os.path.join(config.log_dir, 'eval_{}robo/n_one_robot_arrivals.txt'.format(e_robo))
+                if not os.path.isfile(log_dir + 'eval_{}robo/one_robot_arrivals.txt'.format(e_robo)):
+                    os.path.join(log_dir, 'eval_{}robo/one_robot_arrivals.txt'.format(e_robo))
 
-                if not os.path.isfile(config.log_dir + 'eval_{}robo/one_robot_velocities.txt'.format(e_robo)):
-                    os.path.join(config.log_dir, 'eval_{}robo/one_robot_velocities.txt'.format(e_robo))
+                if not os.path.isfile(log_dir + 'eval_{}robo/one_robot_velocities.txt'.format(e_robo)):
+                    os.path.join(log_dir, 'eval_{}robo/one_robot_velocities.txt'.format(e_robo))
 
-                with open(file=config.log_dir + 'eval_{}robo/n_one_robot_arrivals.txt'.format(e_robo), mode='a') as f:
+                with open(file=log_dir + 'eval_{}robo/one_robot_arrivals.txt'.format(e_robo), mode='a') as f:
                     f.write('{:.2f}\n'.format(n_arrival))
 
-                with open(file=config.log_dir + 'eval_{}robo/one_robot_velocities.txt'.format(e_robo), mode='a') as f:
+                with open(file=log_dir + 'eval_{}robo/one_robot_velocities.txt'.format(e_robo), mode='a') as f:
                     f.write('{:.2f}\n'.format(velocity / (len(terminal_steps.agent_id) * 100)))
 
         total_scores.append(reward)
@@ -105,9 +107,10 @@ if __name__ == '__main__':
     if args.headless:
         d.start()
     for n_robo in args.ns_robo:
-        log_dir = 'log/at{}/round_im_{}_robo_slurm_at{}/'.format(args.n_at, n_robo, args.n_at)
-        for e_robo in args.es_robo:
-            main(args, log_dir=log_dir, n_robo=n_robo, e_robo=e_robo)
+        for t in args.trials:
+            log_dir = 'log/at{}/{}robo/trial_{}/'.format(args.n_at, n_robo, t)
+            for e_robo in args.es_robo:
+                main(args, log_dir=log_dir, n_robo=n_robo, e_robo=e_robo)
 
     if args.headless:
         d.stop()
