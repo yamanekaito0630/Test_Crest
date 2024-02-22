@@ -13,7 +13,7 @@ def parse_args():
     parser.add_argument('--base', help='piaa, pifc, aa', default='piaa')
     parser.add_argument('--version', help='Number of attenpt', type=int, default=1)
     parser.add_argument('--n-at', help='Number of attenpt', type=int, default=5)
-    parser.add_argument('--ns-attempt', required=True, nargs="*", help='Num list of robo', type=int)
+    parser.add_argument('--ns-trial', required=True, nargs="*", help='Num list of robo', type=int)
     parser.add_argument('--ns-robo', required=True, nargs="*", help='Num list of robo', type=int)
     parser.add_argument('--n-fitness', help='Number of fitness', type=int, default=7)
     parser.add_argument('--load-model', help='Path to model file.', default=None)
@@ -34,7 +34,7 @@ def main(config):
     device = torch.device('cpu')
     
     for n_robo in config.ns_robo:
-        for n_attempt in config.ns_attempt:
+        for n_trial in config.ns_trial:
             if config.base == 'piaa':
                 if n_robo == 1:
                     file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, config.n_at, config.version)
@@ -80,7 +80,7 @@ def main(config):
                     num_hidden_layers=2
                 )
 
-            log_dir = 'log/at{}/{}robo/v{}/attempt_{}'.format(config.n_at, n_robo, config.version, n_attempt)
+            log_dir = 'log/at{}/{}robo/v{}/trial_{}'.format(config.n_at, n_robo, config.version, n_trial)
             agent.train(
                 t=config.t,
                 base=config.base,
