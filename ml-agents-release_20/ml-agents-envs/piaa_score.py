@@ -111,7 +111,8 @@ if __name__ == '__main__':
         d.start()
     for n_robo in args.ns_robo:
         for t in args.trials:
-            log_dir = 'log/at{}/{}robo/trial_{}/'.format(args.n_at, n_robo, t)
+            # log_dir = 'log/at{}/{}robo/trial_{}/'.format(args.n_at, n_robo, t)
+            log_dir = 'log/at{at}/round_im_{n_robo}_robo_slurm_at{at}/'.format(at=args.n_at, n_robo=n_robo)
             for e_robo in args.es_robo:
                 main(args, log_dir=log_dir, n_robo=n_robo, e_robo=e_robo)
 

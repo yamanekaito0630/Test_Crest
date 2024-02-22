@@ -1,4 +1,13 @@
 # ライブラリのインポート
+from mpi4py import MPI
+from evolution_strategies.es import CMAES, SimpleGA, OpenES, PEPG
+from torchvision.transforms import transforms
+from PIL import Image
+from mlagents_envs.environment import ActionTuple, UnityEnvironment
+from mlagents_envs.side_channel.engine_configuration_channel import EngineConfigurationChannel
+from permutation_invariant.base_solution import BaseSolution
+from permutation_invariant.modules import SelfAttentionMatrix, VisionAttentionNeuronLayer, AttentionNeuronLayer
+
 import logging
 import math
 import os
@@ -10,29 +19,11 @@ import torch
 import torch.nn as nn
 import gc
 
-from evolution_strategies.es import CMAES, SimpleGA, OpenES, PEPG
-
-from mpi4py import MPI
-from torchvision.transforms import transforms
-from PIL import Image
-from mlagents_envs.environment import ActionTuple, UnityEnvironment
-from mlagents_envs.side_channel.engine_configuration_channel import EngineConfigurationChannel
-from permutation_invariant.base_solution import BaseSolution
-from permutation_invariant.modules import SelfAttentionMatrix, VisionAttentionNeuronLayer, AttentionNeuronLayer
-
 torch.set_num_threads(1)
 
 
 class BaseTorchSolution(BaseSolution):
     def __init__(self, device):
-        self.is_resume = None
-        self.seed = None
-        self.reps = None
-        self.max_iter = None
-        self.popsize = None
-        self.algo = None
-        self.env = None
-        self.file_name = None
         self.modules_to_learn = []
         self.device = torch.device(device)
 
@@ -81,9 +72,6 @@ class BaseTorchSolution(BaseSolution):
 
     def piaa_get_fitness(self, worker_id, params, seed, num_rollouts, n_fitness):
         self.set_params(params)
-        # print('worker_id:', worker_id)
-        # np.random.seed(seed)
-
         total_scores = []
         each_scores = []
         for _ in range(num_rollouts):
@@ -95,7 +83,6 @@ class BaseTorchSolution(BaseSolution):
             reward = 0
             each_reward = np.array([0 for _ in range(n_fitness)])
             while not done:
-                start = time.time()
                 for i in decision_steps.agent_id:
                     camera_obs = np.transpose((self.img_scale(decision_steps.obs[0][i] * 255)), (2, 1, 0))
                     action = self.get_action(camera_obs)
@@ -110,20 +97,12 @@ class BaseTorchSolution(BaseSolution):
                     reward += sum(terminal_steps.reward)
                     for i in terminal_steps.agent_id:
                         each_reward = each_reward + terminal_steps.obs[1][i][:n_fitness]
-                end = time.time()
-
-                # print('worker_id:', worker_id, 'times:', end - start)
             total_scores.append(reward)
             each_scores.append(each_reward)
-
-        # self.env.close()
         return np.mean(total_scores), np.mean(each_scores, axis=0)
 
     def aa_get_fitness(self, worker_id, params, seed, num_rollouts, n_fitness):
         self.set_params(params)
-        # print('worker_id:', worker_id)
-        # np.random.seed(seed)
-
         total_scores = []
         each_scores = []
         for _ in range(num_rollouts):
@@ -135,7 +114,6 @@ class BaseTorchSolution(BaseSolution):
             reward = 0
             each_reward = np.array([0 for _ in range(n_fitness)])
             while not done:
-                start = time.time()
                 for i in decision_steps.agent_id:
                     camera_obs = np.transpose((self.img_scale(decision_steps.obs[0][i] * 255)), (2, 1, 0))
                     action = self.get_action(camera_obs)
@@ -150,9 +128,6 @@ class BaseTorchSolution(BaseSolution):
                     reward += sum(terminal_steps.reward)
                     for i in terminal_steps.agent_id:
                         each_reward = each_reward + terminal_steps.obs[1][i][:n_fitness]
-                end = time.time()
-
-                # print('worker_id:', worker_id, 'times:', end - start)
             total_scores.append(reward)
             each_scores.append(each_reward)
 
@@ -161,9 +136,6 @@ class BaseTorchSolution(BaseSolution):
 
     def pifc_get_fitness(self, worker_id, params, seed, num_rollouts, n_fitness):
         self.set_params(params)
-        # print('worker_id:', worker_id)
-        np.random.seed(seed)
-
         total_scores = []
         each_scores = []
         for _ in range(num_rollouts):
@@ -175,7 +147,6 @@ class BaseTorchSolution(BaseSolution):
             reward = 0
             each_reward = np.array([0, 0, 0, 0])
             while not done:
-                start = time.time()
                 for i in decision_steps.agent_id:
                     obs = np.concatenate([decision_steps.obs[0][i][3::4],
                                           decision_steps.obs[1][i][3::4],
@@ -192,13 +163,8 @@ class BaseTorchSolution(BaseSolution):
                 if done:
                     for i in terminal_steps.agent_id:
                         each_reward = each_reward + terminal_steps.obs[3][i][:n_fitness]
-                end = time.time()
-
-                # print('worker_id:', worker_id, 'times:', end - start)
             total_scores.append(reward)
             each_scores.append(each_reward)
-
-        # self.env.close()
         return np.mean(total_scores), np.mean(each_scores, axis=0)
 
     @staticmethod
@@ -243,37 +209,42 @@ class BaseTorchSolution(BaseSolution):
                 with open(file=log_dir + '/hyper_parameters.txt', mode='a') as f:
                     if base == 'piaa':
                         f.write(
-                            'file_name={}\nnum_param={}\nsalgolithm={}\npopulation_size={}\nmax_iter={}\nroll_out={}\n'
-                            '\nact_dim={}\nmsg_dim={}\npos_em_dim={}\npatch_size={}\nstack_k={}\naa_image_size={}\n'
-                            'aa_query_dim={}\naa_hidden_dim={}\naa_top_k={}'.format(self.file_name,
-                                                                                    self.get_num_params(),
-                                                                                    self.algo,
-                                                                                    self.popsize, self.max_iter,
-                                                                                    self.reps,
-                                                                                    self.act_dim, self.msg_dim,
-                                                                                    self.pos_em_dim,
-                                                                                    self.patch_size,
-                                                                                    self.stack_k,
-                                                                                    self.aa_image_size,
-                                                                                    self.aa_query_dim,
-                                                                                    self.lstm_hidden_dim,
-                                                                                    self.top_k))
+                            'file_name=' + self.file_name
+                            + '\nnum_param=' + self.get_params()
+                            + '\nalgolithm=' + self.algo
+                            + '\npopulation_size=' + self.popsize
+                            + '\nmax_iter=' + self.max_iter
+                            + '\nroll_out=' + self.reps
+                            + '\n'
+                            + '\nact_dim=' + self.act_dim
+                            + '\nmsg_dim=' + self.msg_dim
+                            + '\npos_em_dim=' + self.pos_em_dim
+                            + '\npatch_size=' + self.patch_size
+                            + '\nstack_k=' + self.stack_k
+                            + '\naa_image_size=' + self.aa_image_size
+                            + '\naa_query_dim=' + self.aa_query_dim
+                            + '\naa_hidden_dim=' + self.lstm_hidden_dim
+                            + '\naa_top_k=' + self.top_k
+                        )
+                        
                     elif base == 'aa':
                         f.write(
-                            'file_name={}\nnum_patches={}\nnum_param={}\nsalgolithm={}\npopulation_size={}\nmax_iter={}\nroll_out={}\n'
-                            '\nact_dim={}\npatch_size={}\npatch_stride={}\nquery_dim={}\nhidden_dim={}\nimage_size={}\n'
-                            'top_k={}'.format(self.file_name,
-                                              self.num_patches,
-                                              self.get_num_params(),
-                                              self.algo,
-                                              self.popsize, self.max_iter,
-                                              self.reps,
-                                              self.act_dim, self.patch_size,
-                                              self.patch_stride,
-                                              self.query_dim,
-                                              self.hidden_dim,
-                                              self.image_size,
-                                              self.top_k))
+                            'file_name=' + self.file_name
+                            + '\nnum_patches=' + self.num_patches
+                            + '\nnum_params=' + self.get_num_params()
+                            + '\nalgolithm=' + self.algo
+                            + '\npopulation_size' + self.popsize
+                            + '\nmax_iter=' + self.max_iter
+                            + '\nroll_out=' + self.reps
+                            + '\n'
+                            + '\nact_dim=' + self.act_dim
+                            + '\npatch_size=' + self.patch_size
+                            + '\npatch_stride=' + self.patch_stride
+                            + '\nquery_dim=' + self.query_dim
+                            + '\nhidden_dim=' + self.hidden_dim
+                            + '\nimage_size=' + self.image_size
+                            + '\ntop_k=' + self.top_k
+                        )
             log_file = os.path.join(log_dir, '{}.txt'.format(name))
             file_hdl = logging.FileHandler(log_file)
             formatter = logging.Formatter(fmt=log_format)
@@ -286,11 +257,11 @@ class BaseTorchSolution(BaseSolution):
         sum_fitness = np.sum(each_fitnesses, axis=1)
         max_index = np.argmax(sum_fitness)
         max_fitness = each_fitnesses[max_index]
-        max_div_path = log_dir + '/each_fitneses/fitness_max_div.txt'
+        path = log_dir + '/each_fitneses/fitness_max_div.txt'
 
-        if not os.path.exists(max_div_path):
-            os.path.join(max_div_path)
-        with open(file=max_div_path, mode='a') as f:
+        if not os.path.exists(path):
+            os.path.join(path)
+        with open(file=path, mode='a') as f:
             for i in range(len(max_fitness)):
                 if i == 0:
                     f.write('Iter={0},{1:.2f},'.format(n_iter + 1, max_fitness[i]))
@@ -299,19 +270,6 @@ class BaseTorchSolution(BaseSolution):
                 else:
                     f.write('{:.2f},'.format(max_fitness[i]))
 
-        n_fitness = each_fitnesses.shape[1]
-        for i in range(n_fitness):
-            path = log_dir + '/each_fitneses/fitness_{}.txt'.format(i + 1)
-            if not os.path.exists(path):
-                os.path.join(path)
-            with open(file=path, mode='a') as f:
-                f.write('Iter={0}, '
-                        'max={1:.2f}, avg={2:.2f}, min={3:.2f}, std={4:.2f}\n'.format(n_iter + 1,
-                                                                                      np.max(each_fitnesses[:, i]),
-                                                                                      np.mean(each_fitnesses[:, i]),
-                                                                                      np.min(each_fitnesses[:, i]),
-                                                                                      np.std(each_fitnesses[:, i])))
-
     def init_run(self):
         self.env.reset()
         behavior_names = list(self.env.behavior_specs.keys())
@@ -319,7 +277,6 @@ class BaseTorchSolution(BaseSolution):
 
         done = False
         while not done:
-            start = time.time()
             for i in decision_steps.agent_id:
                 action = (np.random.rand(self.act_dim) * 2.0 - 1.0).reshape(1, self.act_dim).astype(np.float32)
                 action_tuple = ActionTuple(continuous=action)
@@ -342,7 +299,6 @@ class BaseTorchSolution(BaseSolution):
               init_best: float = -float('Inf'),
               n_fitness: int = 4,
               ):
-        solver, best_so_far, logger, params_sets, rnd = None, None, None, None, None
         ii32 = np.iinfo(np.int32)
         rnd = np.random.RandomState(seed=seed)
 
@@ -420,13 +376,18 @@ class BaseTorchSolution(BaseSolution):
                         popsize=size * t,
                         weight_decay=0.01
                     )
-
         comm.barrier()
+
         # Unity環境の生成
         channel = EngineConfigurationChannel()
         channel.set_configuration_parameters(time_scale=20, width=100, height=100)
-        self.env = UnityEnvironment(file_name=self.file_name, no_graphics=False, side_channels=[channel],
-                                    worker_id=rank+1, seed=seed)
+        self.env = UnityEnvironment(
+            file_name=self.file_name,
+            no_graphics=False,
+            side_channels=[channel],
+            worker_id=rank+1,
+            seed=seed
+        )
         self.init_run()
 
         for n_iter in range(from_iter - 1, max_iter):
@@ -460,7 +421,7 @@ class BaseTorchSolution(BaseSolution):
                 elif base == 'aa':
                     f, e_f = self.aa_get_fitness(rank, params_set[i], task_seed, reps, n_fitness)
                 else:
-                    f, e_f = self.pifc_get_fitness(rank, params_set, task_seed, reps, n_fitness)
+                    f, e_f = self.pifc_get_fitness(rank, params_set[i], task_seed, reps, n_fitness)
                 fitness.append(f)
                 each_fitness.append(e_f)
 
@@ -471,11 +432,6 @@ class BaseTorchSolution(BaseSolution):
                 each_fitnesses = np.concatenate(np.array(each_fitnesses))
 
                 self.each_fitness_logger(log_dir=log_dir, n_iter=n_iter, each_fitnesses=each_fitnesses)
-
-                # 適応度の保存
-                if (n_iter + 1) % save_interval == 0:
-                    fitnesses_path = os.path.join(log_dir + '/gen_fitnesses', 'fitnesses_{}.npz'.format(n_iter + 1))
-                    np.savez(fitnesses_path, fitnesses=fitnesses)
 
                 solver.tell(fitnesses)
 
@@ -498,7 +454,6 @@ class BaseTorchSolution(BaseSolution):
                     model_path = os.path.join(log_dir, 'Iter_{}.npz'.format(n_iter + 1))
                     self.save_params(solver=solver, solution=self, model_path=model_path)
             gc.collect()
-
         self.env.close()
 
 
@@ -626,8 +581,6 @@ class PIAttentionAgent(BaseTorchSolution):
         self.hx = None
 
     def plot_attention_patches(self, img, path, counter, attention_patch_ix, patches_importance_vector):
-        # print('importances:', patches_importance_vector.sort())
-
         attention_patch = np.ones([self.patch_size, self.patch_size, 3])
         num_patches = img.shape[0] // self.patch_size
         black_img = img * np.array([0, 0, 0])

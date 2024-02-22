@@ -1,9 +1,9 @@
 # ライブラリのインポート
-import argparse
-import torch
-
 from pyvirtualdisplay import Display
 from permutation_invariant.solutions_mpi_evojax import PIAttentionAgent, PIFCSolution, AttentionAgent
+
+import argparse
+import torch
 
 
 def parse_args():

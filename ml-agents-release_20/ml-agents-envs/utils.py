@@ -107,7 +107,7 @@ def z_t_creator(path, n_recode, coordinates, n_robo, fontsize=64, width=3):
     t = np.linspace(1, 1000, 999)
 
     _, z, _ = coordinates / 9.2
-    fig = plt.figure(figsize=(18, 13))
+    fig = plt.figure(figsize=(15, 13))
     ax = fig.add_subplot(1, 1, 1)
     ax.tick_params(length=9, width=width)
     ax.spines["top"].set_linewidth(width)
@@ -129,14 +129,13 @@ def z_t_creator(path, n_recode, coordinates, n_robo, fontsize=64, width=3):
     plt.clf()
     plt.close()
     
-    
-    
-for i in [1, 2, 4, 8, 12]:
-    for j in [1, 2, 4, 8, 12]:
-        for k in range(3):
-            c = pickle.load(open('log/at4/round_im_{}_robo_slurm_at4/eval_{}robo/robots_coordinates_{}.pkl'.format(i, j, k), 'rb'))
-            coordinates_3d(path='log/at4/round_im_{}_robo_slurm_at4/eval_{}robo/'.format(i, j), n_recode=k, coordinates=c, n_robo=j)
-            z_t_creator(path='log/at4/round_im_{}_robo_slurm_at4/eval_{}robo/'.format(i, j), n_recode=k, coordinates=c, n_robo=j)
+
+# for i in [1, 2, 4, 8, 12]:
+#     for j in [1, 2, 4, 8, 12]:
+#         for k in range(3):
+#             c = pickle.load(open('log/at4/round_im_{}_robo_slurm_at4/eval_{}robo/robots_coordinates_{}.pkl'.format(i, j, k), 'rb'))
+#             coordinates_3d(path='log/at4/round_im_{}_robo_slurm_at4/eval_{}robo/'.format(i, j), n_recode=k, coordinates=c, n_robo=j)
+#             z_t_creator(path='log/at4/round_im_{}_robo_slurm_at4/eval_{}robo/'.format(i, j), n_recode=k, coordinates=c, n_robo=j)
 
 
 #for i in [1, 2, 4, 8, 12]:
