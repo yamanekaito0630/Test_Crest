@@ -20,13 +20,15 @@ from mlagents_envs.side_channel.engine_configuration_channel import EngineConfig
 
 def parse_args():
     parser = argparse.ArgumentParser()
+    parser.add_argument('--os', help='Mac or Linux', type=str, default="Linux")
     parser.add_argument('--n-at', help='Num of attempt', type=int, default=5)
+    parser.add_argument('--ns-trial', required=True, nargs="*", help='Num list of trial', type=int)
     parser.add_argument('--ns-robo', required=True, nargs="*", help='Num list of robo', type=int)
     parser.add_argument('--es-robo', required=True, nargs="*", help='Num list of eval robo', type=int)
     parser.add_argument('--versions', required=True, nargs="*", help='Num list of versions', type=int)
     parser.add_argument('--load-model', help='Select model file', default='Iter_1000.npz')
     parser.add_argument('--n-fitness', help='Num of Fitness', type=int, default=4)
-    parser.add_argument('--steps', help='Steps for eval', type=int, default=2000)
+    parser.add_argument('--steps', help='Steps for eval', type=int, default=1000)
     parser.add_argument('--reps', help='repeats of recode', type=int, default=3)
     parser.add_argument('--headless', help='True or False', type=bool, default=True)
     config, _ = parser.parse_known_args()
@@ -39,9 +41,10 @@ def main(config, log_dir, n_at, e_robo, n_version):
         os.makedirs(save_path)
 
     device = torch.device('cpu')
-    file_name = 'render_apps/UnderWaterDrones_IM_Round_{}Robots_At{}'.format(e_robo, n_at)
     if e_robo == 1:
-        file_name = 'render_apps/UnderWaterDrones_IM_Round_OneRobot_At{}'.format(n_at)
+        file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, n_at, n_version)
+    else:
+        file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, n_at, n_version)
 
     agent = PIAttentionAgent(
         device=device,
@@ -69,14 +72,8 @@ def main(config, log_dir, n_at, e_robo, n_version):
     counter = 0
     n_recode = 0
 
-    xs = []
-    ys = []
-    zs = []
-
-    rss = []
-    gss = []
-    bss = []
-    impss = []
+    xs, ys, zs = [], [], []
+    rss, gss, bss, impss = [], [], [], []
 
     while True:
         for i in decision_steps.agent_id:
@@ -118,14 +115,8 @@ def main(config, log_dir, n_at, e_robo, n_version):
             n_recode += 1
             env.reset()
 
-            xs = []
-            ys = []
-            zs = []
-
-            rss = []
-            gss = []
-            bss = []
-            impss = []
+            xs, ys, zs = [], [], []
+            rss, gss, bss, impss = [], [], [], []
 
             if n_recode >= config.reps:
                 env.close()
@@ -138,26 +129,25 @@ if __name__ == '__main__':
     if args.headless:
         d.start()
 
-    for n_version in args.versions:
-        print('v1-----------------------------')
-        for n_robo in args.ns_robo:
-            print('n_robo={}-----------------------------'.format(n_robo))
-            log_dir = "log/at{}/round_im_{}_robo_slurm_at{}/".format(args.n_at, n_robo, args.n_at)
+    for n_robo in args.ns_robo:
+        for n_version in args.versions:
+            for n_trial in args.ns_trials:
+                # log_dir = "log/at{}/round_im_{}_robo_slurm_at{}/".format(args.n_at, n_robo, args.n_at)
+                log_dir = "log/at{at}/{n_robo}robo/v{version}/trial{n_trial}/".format(at=args.n_at, n_robo=n_robo, version=n_version, n_trial=n_trial)
 
-            while not os.path.isfile(log_dir + args.load_model):
-                print(log_dir + args.load_model + " is not exist.")
-                time.sleep(5)
+                while not os.path.isfile(log_dir + args.load_model):
+                    print(log_dir + args.load_model + " is not exist.")
+                    time.sleep(5)
 
-            for e_robo in args.es_robo:
-                print('eval_robo={}-----------------------------'.format(e_robo))
-                main(args, log_dir, args.n_at, e_robo, n_version)
+                for e_robo in args.es_robo:
+                    main(args, log_dir, args.n_at, e_robo, n_version)
 
-                res_1 = subprocess.run(
-                    "sh recode_pi_behave.sh {} {} {} {}".format(args.n_at, n_robo, n_version, e_robo), shell=True)
-                print("res_1:", res_1.returncode)
-                res_2 = subprocess.run(
-                    "sh recode_pi_attention.sh {} {} {} {}".format(args.n_at, n_robo, n_version, e_robo), shell=True)
-                print("res_2:", res_2.returncode)
+                    res_1 = subprocess.run(
+                        "sh recode_pi_behave.sh {} {} {} {} {}".format(args.n_at, n_robo, n_version, e_robo, n_trial), shell=True)
+                    print("res_1:", res_1.returncode)
+                    res_2 = subprocess.run(
+                        "sh recode_pi_attention.sh {} {} {} {} {}".format(args.n_at, n_robo, n_version, e_robo, n_trial), shell=True)
+                    print("res_2:", res_2.returncode)
 
     if args.headless:
         d.stop()
