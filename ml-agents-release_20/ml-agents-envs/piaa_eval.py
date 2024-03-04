@@ -26,30 +26,33 @@ def parse_args():
     parser.add_argument('--ns-robo', required=True, nargs="*", help='Num list of robo', type=int)
     parser.add_argument('--es-robo', required=True, nargs="*", help='Num list of eval robo', type=int)
     parser.add_argument('--versions', required=True, nargs="*", help='Num list of versions', type=int)
+    parser.add_argument('--eval-version', required=True, help='eval version', type=int)
     parser.add_argument('--load-model', help='Select model file', default='Iter_1000.npz')
     parser.add_argument('--n-fitness', help='Num of Fitness', type=int, default=4)
     parser.add_argument('--steps', help='Steps for eval', type=int, default=1000)
     parser.add_argument('--reps', help='repeats of recode', type=int, default=3)
-    parser.add_argument('--headless', help='True or False', type=bool, default=True)
+    parser.add_argument('--env-name', help='name of environment', type=str, default="default")
+    parser.add_argument('--exclude-other-envs', help='True or False', type=int, default=0)
+    parser.add_argument('--headless', help='True or False', type=int, default=1)
     config, _ = parser.parse_known_args()
     return config
 
 
-def main(config, log_dir, n_at, e_robo, n_version):
-    save_path = log_dir + 'eval_{}robo/'.format(e_robo)
+def main(config, log_dir, n_at, e_robo, e_version):
+    save_path = log_dir + 'eval_{num_robo}robo/{env_name}/'.format(num_robo=e_robo, env_name=config.env_name)
     if not os.path.exists(save_path):
         os.makedirs(save_path)
 
     device = torch.device('cpu')
     if e_robo == 1:
-        file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, n_at, n_version)
+        file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, n_at, e_version)
     else:
-        file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, n_at, n_version)
+        file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, n_at, e_version)
 
     agent = PIAttentionAgent(
         device=device,
         file_name=file_name,
-        act_dim=5,
+        act_dim=3,
         msg_dim=16,
         pos_em_dim=8,
         patch_size=6,
@@ -133,7 +136,6 @@ if __name__ == '__main__':
     for n_robo in args.ns_robo:
         for n_version in args.versions:
             for n_trial in args.ns_trial:
-                # log_dir = "log/at{}/round_im_{}_robo_slurm_at{}/".format(args.n_at, n_robo, args.n_at)
                 log_dir = "log/at{at}/{n_robo}robo/v{version}/trial_{n_trial}/".format(at=args.n_at, n_robo=n_robo, version=n_version, n_trial=n_trial)
 
                 while not os.path.isfile(log_dir + args.load_model):
@@ -141,13 +143,17 @@ if __name__ == '__main__':
                     time.sleep(5)
 
                 for e_robo in args.es_robo:
-                    main(args, log_dir, args.n_at, e_robo, n_version)
+                    if args.exclude_other_envs:
+                        if e_robo != n_robo:
+                            continue
+
+                    main(args, log_dir, args.n_at, e_robo, args.eval_version)
 
                     res_1 = subprocess.run(
-                        "sh recode_pi_behave.sh {} {} {} {} {}".format(args.n_at, n_robo, n_version, e_robo, n_trial), shell=True)
+                        "sh recode_pi_behave.sh {} {} {} {} {} {}".format(args.n_at, n_robo, n_version, e_robo, n_trial, args.env_name), shell=True)
                     print("res_1:", res_1.returncode)
                     res_2 = subprocess.run(
-                        "sh recode_pi_attention.sh {} {} {} {} {}".format(args.n_at, n_robo, n_version, e_robo, n_trial), shell=True)
+                        "sh recode_pi_attention.sh {} {} {} {} {} {}".format(args.n_at, n_robo, n_version, e_robo, n_trial, args.env_name), shell=True)
                     print("res_2:", res_2.returncode)
 
     if args.headless:

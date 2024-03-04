@@ -103,6 +103,9 @@ def coordinates_3d(path, n_recode, coordinates, n_robo, fontsize=70):
 def z_t_creator(path, n_recode, coordinates, n_robo, fontsize=64, width=3):
     plt.rcParams.update({'font.size': fontsize})
     plt.rcParams.update({'font.family': 'Times New Roman'})
+    plt.rcParams['xtick.direction'] = 'in'
+    plt.rcParams['ytick.direction'] = 'in'
+    plt.rcParams['axes.xmargin'] = 0
 
     t = np.linspace(1, 1000, 999)
 
