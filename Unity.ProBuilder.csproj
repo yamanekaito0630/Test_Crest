@@ -113,8 +113,8 @@
      <Compile Include="Library/PackageCache/com.unity.probuilder@5.1.1/Runtime/Core/InternalUtility.cs" />
      <Compile Include="Library/PackageCache/com.unity.probuilder@5.1.1/Runtime/Shapes/Torus.cs" />
      <Compile Include="Library/PackageCache/com.unity.probuilder@5.1.1/Runtime/Core/Normal.cs" />
-     <Compile Include="Library/PackageCache/com.unity.probuilder@5.1.1/Runtime/Core/Entity.cs" />
      <Compile Include="Library/PackageCache/com.unity.probuilder@5.1.1/Runtime/Core/EdgeLookup.cs" />
+     <Compile Include="Library/PackageCache/com.unity.probuilder@5.1.1/Runtime/Core/Entity.cs" />
      <Compile Include="Library/PackageCache/com.unity.probuilder@5.1.1/Runtime/Core/Bounds2D.cs" />
      <Compile Include="Library/PackageCache/com.unity.probuilder@5.1.1/Runtime/MeshOperations/ExtrudeElements.cs" />
      <Compile Include="Library/PackageCache/com.unity.probuilder@5.1.1/Runtime/Core/HandleUtility.cs" />

@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/MyProject/Scenes/IR_Follow.unity
     guid: 66797e6f5a4da6133844f9a3ca80bb2b
   - enabled: 0
-    path: Assets/MyProject/Scenes/IR_Round.unity
+    path: Assets/MyProject/Scenes/IR_Test/IR_Round.unity
     guid: cc219bd50a01931ecb9c7d32b2bb0380
-  - enabled: 1
+  - enabled: 0
     path: Assets/MyProject/Scenes/IM_Round.unity
     guid: dbf3d8c846d86fe888e93620da76832d
-  - enabled: 0
+  - enabled: 1
     path: Assets/MyProject/Scenes/IM_Round_V2.unity
     guid: 4a3bccabf0d6ca2c4ae1c2b20b5d69c6
   m_configObjects: {}
