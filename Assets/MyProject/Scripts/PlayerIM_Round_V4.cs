@@ -13,11 +13,11 @@ using Random = UnityEngine.Random;
 public class PlayerIM_Round_V4 : Agent
 {
     // 各種パラメータ
-    public float speed = 30.0f;
-    public float rotSpeed = 1.0f;
+    public float speed = 450.0f;
+    public float rotSpeed = 6.0f;
     // public float propulsion = 30.0f;
     public float defaultDrag = 0.0f;
-    public float waterDrag = 10.0f;
+    public float waterDrag = 20.0f;
     public Vector3 initPos;
     private Quaternion initRot;
 
@@ -315,6 +315,9 @@ public class PlayerIM_Round_V4 : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
+        Debug.Log(playerRb.velocity.magnitude);
+
+
         // アクションを取得
         float horizontalInput = Mathf.Abs(actions.ContinuousActions[0]);
         float verticalInput = actions.ContinuousActions[1];
