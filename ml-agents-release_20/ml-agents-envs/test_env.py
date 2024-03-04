@@ -9,7 +9,7 @@ from mlagents_envs.side_channel.engine_configuration_channel import EngineConfig
 # Unity環境の生成
 channel = EngineConfigurationChannel()
 channel.set_configuration_parameters(time_scale=1, width=1500, height=600, capture_frame_rate=50)
-env = UnityEnvironment('Test_Crest_App/Mac/app/UnderWaterDrones_IM_Round_OneRobot_At9_V2', side_channels=[channel], no_graphics=False, worker_id=50)
+env = UnityEnvironment('Test_Crest_App/Linux/app/UnderWaterDrones_IM_Round_OneRobot_At9_V1', side_channels=[channel], no_graphics=False, worker_id=50)
 
 # Unity環境のリセット
 env.reset()

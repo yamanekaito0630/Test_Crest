@@ -210,40 +210,40 @@ class BaseTorchSolution(BaseSolution):
                     if base == 'piaa':
                         f.write(
                             'file_name=' + self.file_name
-                            + '\nnum_param=' + self.get_params()
+                            + '\nnum_param=' + str(self.get_params())
                             + '\nalgolithm=' + self.algo
-                            + '\npopulation_size=' + self.popsize
-                            + '\nmax_iter=' + self.max_iter
-                            + '\nroll_out=' + self.reps
+                            + '\npopulation_size=' + str(self.popsize)
+                            + '\nmax_iter=' + str(self.max_iter)
+                            + '\nroll_out=' + str(self.reps)
                             + '\n'
-                            + '\nact_dim=' + self.act_dim
-                            + '\nmsg_dim=' + self.msg_dim
-                            + '\npos_em_dim=' + self.pos_em_dim
-                            + '\npatch_size=' + self.patch_size
-                            + '\nstack_k=' + self.stack_k
-                            + '\naa_image_size=' + self.aa_image_size
-                            + '\naa_query_dim=' + self.aa_query_dim
-                            + '\naa_hidden_dim=' + self.lstm_hidden_dim
-                            + '\naa_top_k=' + self.top_k
+                            + '\nact_dim=' + str(self.act_dim)
+                            + '\nmsg_dim=' + str(self.msg_dim)
+                            + '\npos_em_dim=' + str(self.pos_em_dim)
+                            + '\npatch_size=' + str(self.patch_size)
+                            + '\nstack_k=' + str(self.stack_k)
+                            + '\naa_image_size=' + str(self.aa_image_size)
+                            + '\naa_query_dim=' + str(self.aa_query_dim)
+                            + '\naa_hidden_dim=' + str(self.lstm_hidden_dim)
+                            + '\naa_top_k=' + str(self.top_k)
                         )
                         
                     elif base == 'aa':
                         f.write(
                             'file_name=' + self.file_name
-                            + '\nnum_patches=' + self.num_patches
-                            + '\nnum_params=' + self.get_num_params()
+                            + '\nnum_patches=' + str(self.num_patches)
+                            + '\nnum_params=' + str(self.get_num_params())
                             + '\nalgolithm=' + self.algo
-                            + '\npopulation_size' + self.popsize
-                            + '\nmax_iter=' + self.max_iter
-                            + '\nroll_out=' + self.reps
+                            + '\npopulation_size' + str(self.popsize)
+                            + '\nmax_iter=' + str(self.max_iter)
+                            + '\nroll_out=' + str(self.reps)
                             + '\n'
-                            + '\nact_dim=' + self.act_dim
-                            + '\npatch_size=' + self.patch_size
-                            + '\npatch_stride=' + self.patch_stride
-                            + '\nquery_dim=' + self.query_dim
-                            + '\nhidden_dim=' + self.hidden_dim
-                            + '\nimage_size=' + self.image_size
-                            + '\ntop_k=' + self.top_k
+                            + '\nact_dim=' + str(self.act_dim)
+                            + '\npatch_size=' + str(self.patch_size)
+                            + '\npatch_stride=' + str(self.patch_stride)
+                            + '\nquery_dim=' + str(self.query_dim)
+                            + '\nhidden_dim=' + str(self.hidden_dim)
+                            + '\nimage_size=' + str(self.image_size)
+                            + '\ntop_k=' + str(self.top_k)
                         )
             log_file = os.path.join(log_dir, '{}.txt'.format(name))
             file_hdl = logging.FileHandler(log_file)

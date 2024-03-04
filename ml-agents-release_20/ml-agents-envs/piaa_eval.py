@@ -42,14 +42,14 @@ def main(config, log_dir, n_at, e_robo, n_version):
 
     device = torch.device('cpu')
     if e_robo == 1:
-        file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, n_at, n_version)
+        file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, n_at, n_version)
     else:
-        file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, n_at, n_version)
+        file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, n_at, n_version)
 
     agent = PIAttentionAgent(
         device=device,
         file_name=file_name,
-        act_dim=3,
+        act_dim=5,
         msg_dim=16,
         pos_em_dim=8,
         patch_size=6,
@@ -94,7 +94,7 @@ def main(config, log_dir, n_at, e_robo, n_version):
         # simple_img = cv2.resize(img, (400, 400))[:, :, ::-1]
         # cv2.imwrite('simple_obs/img_' + str(counter) + '.png', simple_img)
 
-        rs, gs, bs, imps = agent.show_gui(obs=img, counter=counter, path=log_dir)
+        rs, gs, bs, imps = agent.show_gui(obs=img, counter=counter, path=save_path)
         rss += rs
         gss += gs
         bss += bs
@@ -107,6 +107,7 @@ def main(config, log_dir, n_at, e_robo, n_version):
             robots_coordinates = np.array([xs, ys, zs])
             pickle.dump(robots_coordinates, open(save_path + 'robots_coordinates_{}.pkl'.format(n_recode), 'wb'))
             u.coordinates_heatmap_creator(path=save_path, coordinates=robots_coordinates, n_recode=n_recode)
+            u.z_t_creator(path=save_path, n_recode=n_recode, coordinates=robots_coordinates, n_robo=e_robo)
 
             apm = (rss, gss, bss, impss)
             pickle.dump(apm, open(save_path + 'ap_material_{}.pkl'.format(n_recode), 'wb'))
@@ -131,9 +132,9 @@ if __name__ == '__main__':
 
     for n_robo in args.ns_robo:
         for n_version in args.versions:
-            for n_trial in args.ns_trials:
+            for n_trial in args.ns_trial:
                 # log_dir = "log/at{}/round_im_{}_robo_slurm_at{}/".format(args.n_at, n_robo, args.n_at)
-                log_dir = "log/at{at}/{n_robo}robo/v{version}/trial{n_trial}/".format(at=args.n_at, n_robo=n_robo, version=n_version, n_trial=n_trial)
+                log_dir = "log/at{at}/{n_robo}robo/v{version}/trial_{n_trial}/".format(at=args.n_at, n_robo=n_robo, version=n_version, n_trial=n_trial)
 
                 while not os.path.isfile(log_dir + args.load_model):
                     print(log_dir + args.load_model + " is not exist.")
