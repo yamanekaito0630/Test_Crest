@@ -2,3 +2,4 @@ env/
 Library/
 Logs/
 ml-agents-release_20/Project
+.DS_Store
