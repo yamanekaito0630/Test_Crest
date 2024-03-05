@@ -89,7 +89,7 @@ Material:
     - _ApplyNormalMapping: 1
     - _BumpScale: 1
     - _Caustics: 1
-    - _CausticsDepthOfField: 1000
+    - _CausticsDepthOfField: 5
     - _CausticsDistortionScale: 25
     - _CausticsDistortionStrength: 0.16
     - _CausticsFocalDepth: 2

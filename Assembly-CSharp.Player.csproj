@@ -78,6 +78,7 @@
      <Compile Include="Assets/MyProject/Scripts/PlayerIR_V2.cs" />
      <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/SepiaTone.cs" />
      <Compile Include="Assets/MyProject/Scripts/IRSensor.cs" />
+     <Compile Include="Assets/MyProject/Scripts/PlayerIM_Round_V4.cs" />
      <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ContrastEnhance.cs" />
      <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/CameraMotionBlur.cs" />
      <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/GlobalFog.cs" />
@@ -102,7 +103,6 @@
      <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Fisheye.cs" />
      <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/MotionBlur.cs" />
      <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/CreaseShading.cs" />
-     <Compile Include="Assets/MyProject/Scripts/PlayerIM_Round_V4.cs" />
      <Reference Include="UnityEngine">
      <HintPath>/Applications/Unity/Hub/Editor/2021.3.30f1/PlaybackEngines/LinuxStandaloneSupport/Variations/mono/Managed/UnityEngine.dll</HintPath>
      </Reference>
