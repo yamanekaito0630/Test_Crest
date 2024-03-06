@@ -97,7 +97,7 @@ def main(config, log_dir, n_at, e_robo, e_version):
         # simple_img = cv2.resize(img, (400, 400))[:, :, ::-1]
         # cv2.imwrite('simple_obs/img_' + str(counter) + '.png', simple_img)
 
-        rs, gs, bs, imps = agent.show_gui(obs=img, counter=counter, path=save_path)
+        rs, gs, bs, imps = agent.show_gui(obs=img, counter=counter, path="log/")
         rss += rs
         gss += gs
         bss += bs

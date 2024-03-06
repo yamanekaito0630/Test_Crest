@@ -37,13 +37,15 @@ def main(config):
         for n_trial in config.ns_trial:
             if config.base == 'piaa':
                 if n_robo == 1:
-                    file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, config.n_at, config.version)
+                    file_name = 'apps/UnderWaterDrones_IM_Round_OneRobot_At{at}'.format(at=config.n_at)
+                    # file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, config.n_at, config.version)
                 else:
-                    file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, n_robo, config.n_at, config.version)
+                    file_name = 'apps/UnderWaterDrones_IM_Round_{num_robo}Robots_At{at}'.format(num_robo=n_robo, at=config.n_at)
+                    # file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, n_robo, config.n_at, config.version)
                 agent = PIAttentionAgent(
                     device=device,
                     file_name=file_name,
-                    act_dim=5,
+                    act_dim=3,
                     msg_dim=16,
                     pos_em_dim=8,
                     patch_size=6,
