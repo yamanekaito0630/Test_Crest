@@ -9,7 +9,7 @@ from mpl_toolkits.mplot3d import Axes3D
 
 
 def coordinates_heatmap_creator(path, coordinates, n_recode, range=4, resize=36, vmax=10):
-    plt.rcParams.update({'font.size': 40})
+    plt.rcParams.update({'font.size': 30})
     plt.rcParams.update({'font.family': 'Times New Roman'})
 
     x, z, y = coordinates / 9.2
@@ -38,38 +38,42 @@ def coordinates_heatmap_creator(path, coordinates, n_recode, range=4, resize=36,
     plt.close()
 
 
-def at_scatter_creator(path, n_recode, apm, fontsize=40):
+def at_scatter_creator(path, n_recode, apm, fontsize=37):
+    plt.rcParams.update({'font.size': fontsize})
+    plt.rcParams.update({'font.family': 'Times New Roman'})
+
     r, g, b, imp = apm
-    fig = plt.figure(figsize=(10, 10))
+    fig = plt.figure(figsize=(15, 15))
     ax = fig.add_subplot(projection='3d')
     scatter = ax.scatter(r, g, b,
                          s=1,
                          c=imp,
                          cmap='viridis',
-                         norm=mcolors.LogNorm())
+                         norm=mcolors.LogNorm(vmin=0.1, vmax=100))
     # scatter = ax.scatter(r, g, b,
     #                      s=1,
     #                      c=imp,
     #                      cmap='viridis')
 
-    ax.set_xlabel('Red', rotation=None, labelpad=30, fontsize=fontsize)
-    ax.set_ylabel('Green', rotation=None, labelpad=30, fontsize=fontsize)
-    ax.set_zlabel('Blue', rotation=90, labelpad=30, fontsize=fontsize)
+    ax.set_xlabel('Red', rotation=None, labelpad=30)
+    ax.set_ylabel('Green', rotation=None, labelpad=30)
+    ax.set_zlabel('Blue', rotation=90, labelpad=30)
 
     ax.xaxis.set_ticks([30, 60, 90, 120, 150, 180, 210, 240])
     ax.yaxis.set_ticks([30, 60, 90, 120, 150, 180, 210, 240])
     ax.zaxis.set_ticks([30, 60, 90, 120, 150, 180, 210, 240])
+    ax.zaxis.set_tick_params(pad=10)
 
     plt.tight_layout()
     cbar = plt.colorbar(scatter, shrink=0.7, pad=0.1)
-    cbar.set_label('Importance', fontsize=fontsize)
+    cbar.set_label('Importance')
     plt.savefig(path + 'at_scatter_{}.png'.format(n_recode))
     
     plt.clf()
     plt.close()
     
     
-def coordinates_3d(path, n_recode, coordinates, n_robo, fontsize=70):
+def coordinates_3d(path, n_recode, coordinates, n_robo, fontsize=60):
     plt.rcParams.update({'font.size': fontsize})
     plt.rcParams.update({'font.family': 'Times New Roman'})
     plt.rcParams['xtick.direction'] = 'in'
@@ -110,7 +114,7 @@ def z_t_creator(path, n_recode, coordinates, n_robo, fontsize=64, width=3):
     t = np.linspace(1, 1000, 999)
 
     _, z, _ = coordinates / 9.2
-    fig = plt.figure(figsize=(15, 13))
+    fig = plt.figure(figsize=(18, 13))
     ax = fig.add_subplot(1, 1, 1)
     ax.tick_params(length=9, width=width)
     ax.spines["top"].set_linewidth(width)
@@ -124,7 +128,7 @@ def z_t_creator(path, n_recode, coordinates, n_robo, fontsize=64, width=3):
     ax.set_xlabel('Timesteps')
     ax.set_ylabel('Z', rotation=90)
     ax.set_xticks([0, 200, 400, 600, 800, 1000])
-    ax.set_yticks([0.0, 1.0, 2.0, 3.0])
+    ax.set_yticks([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
 
     plt.tight_layout()
     plt.savefig(path + 't_z_{}.png'.format(n_recode))
@@ -133,12 +137,14 @@ def z_t_creator(path, n_recode, coordinates, n_robo, fontsize=64, width=3):
     plt.close()
     
 
-# for i in [1, 2, 4, 8, 12]:
-#     for j in [1, 2, 4, 8, 12]:
-#         for k in range(3):
-#             c = pickle.load(open('log/at4/round_im_{}_robo_slurm_at4/eval_{}robo/robots_coordinates_{}.pkl'.format(i, j, k), 'rb'))
-#             coordinates_3d(path='log/at4/round_im_{}_robo_slurm_at4/eval_{}robo/'.format(i, j), n_recode=k, coordinates=c, n_robo=j)
-#             z_t_creator(path='log/at4/round_im_{}_robo_slurm_at4/eval_{}robo/'.format(i, j), n_recode=k, coordinates=c, n_robo=j)
+for i in [1, 2, 4, 8, 12]:
+    for j in [1, 2, 4, 8, 12]:
+        for k in range(3):
+            c = pickle.load(open('log/at4/{}robo/v1/trial_3/eval_{}robo/default/robots_coordinates_{}.pkl'.format(i, j, k), 'rb'))
+            coordinates_3d(path='log/at4/{}robo/v1/trial_3/eval_{}robo/default/'.format(i, j), n_recode=k, coordinates=c, n_robo=j)
+            z_t_creator(path='log/at4/{}robo/v1/trial_3/eval_{}robo/default/'.format(i, j), n_recode=k, coordinates=c, n_robo=j)
+            # apm = pickle.load(open('log/at4/{}robo/v1/trial_3/eval_{}robo/default/ap_material_{}.pkl'.format(i, j, k), 'rb'))
+            #at_scatter_creator(path='log/at4/{}robo/v1/trial_3/eval_{}robo/default/'.format(i, j), n_recode=k, apm=apm)
 
 
 #for i in [1, 2, 4, 8, 12]:

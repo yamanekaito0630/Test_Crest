@@ -210,7 +210,7 @@ class BaseTorchSolution(BaseSolution):
                     if base == 'piaa':
                         f.write(
                             'file_name=' + self.file_name
-                            + '\nnum_param=' + str(self.get_params())
+                            + '\nnum_param=' + str(self.get_num_params())
                             + '\nalgolithm=' + self.algo
                             + '\npopulation_size=' + str(self.popsize)
                             + '\nmax_iter=' + str(self.max_iter)
