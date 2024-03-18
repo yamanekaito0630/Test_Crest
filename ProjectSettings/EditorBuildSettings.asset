@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/MyProject/Scenes/IM_Realistic.unity
     guid: dbf3d8c846d86fe888e93620da76832d
-  - enabled: 1
+  - enabled: 0
     path: Assets/MyProject/Scenes/IM_Default.unity
     guid: 4a3bccabf0d6ca2c4ae1c2b20b5d69c6
+  - enabled: 1
+    path: Assets/MyProject/Scenes/IM_RedBot.unity
+    guid: f17eed283105f46a0a06217fc621094c
   m_configObjects: {}
