@@ -9,6 +9,7 @@ import torch
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--os', help='Mac or Linux', type=str, default="Linux")
+    parser.add_argument('--is-test', help='test mode', type=int, default=0)
     parser.add_argument('--t', help='Num of loop', type=int, default=1)
     parser.add_argument('--base', help='piaa, pifc, aa', default='piaa')
     parser.add_argument('--version', help='Number of attenpt', type=int, default=1)
@@ -82,7 +83,11 @@ def main(config):
                     num_hidden_layers=2
                 )
 
-            log_dir = 'log/at{}/{}robo/v{}/trial_{}'.format(config.n_at, n_robo, config.version, n_trial)
+            if is_test:
+                log_dir = 'log/test/at{}/{}robo/v{}/trial_{}'.format(config.n_at, n_robo, config.version, n_trial)
+            else:
+                log_dir = 'log/at{}/{}robo/v{}/trial_{}'.format(config.n_at, n_robo, config.version, n_trial)
+     
             agent.train(
                 t=config.t,
                 base=config.base,
