@@ -83,11 +83,11 @@ def main(config):
                     num_hidden_layers=2
                 )
 
-            if is_test:
+            if config.is_test:
                 log_dir = 'log/test/at{}/{}robo/v{}/trial_{}'.format(config.n_at, n_robo, config.version, n_trial)
             else:
                 log_dir = 'log/at{}/{}robo/v{}/trial_{}'.format(config.n_at, n_robo, config.version, n_trial)
-     
+
             agent.train(
                 t=config.t,
                 base=config.base,
