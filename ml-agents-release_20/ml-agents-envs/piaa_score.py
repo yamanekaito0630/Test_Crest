@@ -34,9 +34,11 @@ def main(config, log_dir, n_robo, e_robo, path):
     device = torch.device('cpu')
     
     if e_robo == 1:
-        file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, config.n_at, config.eval_version)
+        # file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, config.n_at, config.eval_version)
+        file_name = 'apps/UnderWaterDrones_IM_Round_OneRobot_At{at}'.format(at=config.n_at)
     else:
-        file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, config.n_at, config.eval_version)
+        # file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, config.n_at, config.eval_version)
+        file_name = 'apps/UnderWaterDrones_IM_Round_{num_robo}Robots_At{at}'.format(num_robo=e_robo, at=config.n_at)
 
     agent = PIAttentionAgent(
         device=device,

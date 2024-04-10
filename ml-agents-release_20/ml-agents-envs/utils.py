@@ -137,12 +137,12 @@ def z_t_creator(path, n_recode, coordinates, n_robo, fontsize=64, width=3):
     plt.close()
     
 
-for i in [1, 2, 4, 8, 12]:
-    for j in [1, 2, 4, 8, 12]:
+for i in [16, 20]:
+    for j in [1, 2, 4, 8, 12, 16, 20]:
         for k in range(3):
-            c = pickle.load(open('log/at4/{}robo/v1/trial_3/eval_{}robo/default/robots_coordinates_{}.pkl'.format(i, j, k), 'rb'))
-            coordinates_3d(path='log/at4/{}robo/v1/trial_3/eval_{}robo/default/'.format(i, j), n_recode=k, coordinates=c, n_robo=j)
-            z_t_creator(path='log/at4/{}robo/v1/trial_3/eval_{}robo/default/'.format(i, j), n_recode=k, coordinates=c, n_robo=j)
+            c = pickle.load(open('log/at4/{i}robo/v1/trial_3/eval_{j}robo/default/robots_coordinates_{k}.pkl'.format(i=i, j=j, k=k), 'rb'))
+            coordinates_3d(path='log/at4/{i}robo/v1/trial_3/eval_{j}robo/default/'.format(i=i, j=j), n_recode=k, coordinates=c, n_robo=j)
+            # z_t_creator(path='log/at4/{}robo/v1/trial_3/eval_{}robo/default/'.format(i, j), n_recode=k, coordinates=c, n_robo=j)
             # apm = pickle.load(open('log/at4/{}robo/v1/trial_3/eval_{}robo/default/ap_material_{}.pkl'.format(i, j, k), 'rb'))
             #at_scatter_creator(path='log/at4/{}robo/v1/trial_3/eval_{}robo/default/'.format(i, j), n_recode=k, apm=apm)
 

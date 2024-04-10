@@ -45,9 +45,11 @@ def main(config, log_dir, n_at, e_robo, e_version):
 
     device = torch.device('cpu')
     if e_robo == 1:
-        file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, n_at, e_version)
+        file_name = 'render_apps/UnderWaterDrones_IM_Round_OneRobot_At{at}'.format(at=n_at)
+        # file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, n_at, e_version)
     else:
-        file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, n_at, e_version)
+        file_name = 'render_apps/UnderWaterDrones_IM_Round_{num_robo}Robots_At{at}'.format(num_robo=e_robo, at=n_at)
+        # file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, n_at, e_version)
 
     agent = PIAttentionAgent(
         device=device,
