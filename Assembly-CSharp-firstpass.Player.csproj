@@ -12,11 +12,11 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{b6e6ae19-322c-5aa4-4974-4820e326857f}</ProjectGuid>
+    <ProjectGuid>{b4710559-20d8-d427-ac3f-223948c78e02}</ProjectGuid>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Crest</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -25,8 +25,8 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Temp\Bin\Debug\Crest\Player\</OutputPath>
-    <DefineConstants>UNITY_2021_3_30;UNITY_2021_3;UNITY_2021;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_LINUX;UNITY_STANDALONE_LINUX;UNITY_STANDALONE;UNITY_STANDALONE_LINUX_API;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_SPATIALTRACKING;ENABLE_MODULAR_UNITYENGINE_ASSEMBLIES;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;CREST_OCEAN;ENABLE_VR_MODULE;ENABLE_XR_MODULE;CREST_UNITY_BURST;CREST_UNITY_MATHEMATICS;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <OutputPath>Temp\Bin\Debug\Assembly-CSharp-firstpass\Player\</OutputPath>
+    <DefineConstants>UNITY_2021_3_30;UNITY_2021_3;UNITY_2021;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_LINUX;UNITY_STANDALONE_LINUX;UNITY_STANDALONE;UNITY_STANDALONE_LINUX_API;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_SPATIALTRACKING;ENABLE_MODULAR_UNITYENGINE_ASSEMBLIES;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;CREST_OCEAN;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169,0649</NoWarn>
@@ -41,113 +41,54 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Interaction/BoatProbes.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/RegisterHeightInput.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/ComputeShaderHelpers.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/Settings/SimSettingsBase.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Interaction/ObjectWaterInteraction.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/CrestSortedList.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Shapes/FFT/FFTBaker.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Spline/Spline.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Interaction/FloatingObjectBase.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/RenderWireFrame.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/LodDataMgrFoam.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/OceanBuilder.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/LodDataMgrClipSurface.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Interaction/ObjectWaterInteractionAdaptor.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/Editor/EditorHelpers.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Collision/CollProviderNull.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Interaction/SimpleFloatingObject.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Time/TimeProviderCutscene.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/LodDataMgrPersistent.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/Attributes/EmbeddedFieldAttribute.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/Settings/SimSettingsFlow.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/RegisterFoamInput.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/XRHelpers.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/Attributes/LayerAttribute.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/UnderwaterEffect.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Shapes/ShapeGerstnerSplineHandling.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/Settings/SimSettingsSeaFloorDepth.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/CustomMonoBehaviour.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/LodDataMgrAnimWaves.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/Shadows/SimSettingsShadow.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Spline/SplineInterpolation.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/OceanRenderer.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Shapes/ShapeGerstnerBatched.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Collision/SamplingHelpers.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/Editor/PackageManagerHelpers.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/SplinePointData/SplinePointDataFoam.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Interaction/SphereWaterInteraction.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Collision/FlowProviderNull.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Underwater/UnderwaterRenderer.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Collision/CollProvider.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/RegisterAlbedoInput.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/Hashy.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/SplinePointData/SplinePointDataNone.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/LodDataMgrDynWaves.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/LodDataMgrFlow.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Underwater/UnderwaterRenderer.Mask.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Shapes/FFT/FFTCompute.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/FloatingOrigin.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Collision/CollProviderBakedFFT.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/Editor/MultiPropertyDrawer.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/SplinePointData/SplinePointDataFlow.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/BuildCommandBuffer.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Collision/QueryBase.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/Shadows/RegisterShadowInput.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/RegisterLodDataInput.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Spline/SplinePoint.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Shapes/FFT/FFTBakedData.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Time/TimeProviderBase.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/RegisterSeaFloorDepthInput.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/Attributes/ExecuteDuringEditModeAttribute.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/RegisterClipSurfaceInput.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Shapes/OceanWaveSpectrum.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Collision/VisualiseRayTrace.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Underwater/UnderwaterRenderer.Effect.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Shapes/FFT/ShapeFFT.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/PredicatedFieldAttribute.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/RegisterFlowInput.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/RegisterAnimWavesInput.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/Settings/SimSettingsFoam.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Collision/VisualiseCollisionArea.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/OceanDebugGUI.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Shapes/ShapeGerstner.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/RegisterDynWavesInput.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Collision/QueryDisplacements.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/SplinePointData/SplinePointDataWaves.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/OceanValidation.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Time/TimeProviderCustom.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/Attributes/MultiPropertyAttribute.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/Editor/EmbeddedAssetHelpers.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/Helpers.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Time/TimeProviderNetworked.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/OceanChunkRenderer.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/Attributes/OnChangeAttribute.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/WaterBody.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/Settings/SimSettingsAlbedo.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/Shadows/LodDataMgrShadow.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/Attributes/HelpBoxAttribute.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Shapes/ShapeWaves.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/Settings/SimSettingsWave.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Constants.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/LodDataMgrAlbedo.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/RenderAlphaOnSurface.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Collision/QueryFlow.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Time/TimeProviderDefault.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/TextureArrayHelpers.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/Settings/SimSettingsClipSurface.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/Settings/SimSettingsAnimatedWaves.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Collision/RayTraceHelper.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/Editor/ScriptableObjectUtility.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/LodDataMgrSeaFloorDepth.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Spline/SplinePointData.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Reflection/OceanPlanarReflection.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/LodDataMgr.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Helpers/PropertyWrapper.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/Collision/FlowProvider.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/LodTransform.cs" />
-     <Compile Include="Assets/Plugins/Crest/Crest/Scripts/LodData/OceanDepthCache.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ColorCorrectionCurves.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ImageEffects.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/EdgeDetection.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Blur.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/SunShafts.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/PostEffectsHelper.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/DepthOfFieldDeprecated.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Bloom.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/NVJOB Assets/Dynamic Sky Lite/DynamicSkyLite.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/NVJOB Assets/FPS Counter/FPSCounter.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/BloomAndFlares.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ScreenOverlay.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/BlurOptimized.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/BloomOptimized.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/DepthOfField.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Simple Boids/NVBoids.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/NoiseAndScratches.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ColorCorrectionLookup.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/NVJOB Assets/Water Shader SAF/Water.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Twirl.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Other/Scripts/TDControl.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Quads.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/TiltShift.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Grayscale.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ColorCorrectionRamp.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Triangles.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/SepiaTone.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ContrastEnhance.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/CameraMotionBlur.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/GlobalFog.cs" />
+     <Compile Include="Assets/Plugins/com/heparo/terrain/toolkit/scripts/TerrainToolkit.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/PostEffectsBase.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Tonemapping.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ScreenSpaceAmbientObscurance.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/VignetteAndChromaticAberration.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Other/Scripts/Underwater.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ImageEffectBase.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/NoiseAndGrain.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Other/Scripts/Shark.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Antialiasing.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ScreenSpaceAmbientOcclusion.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Other/Scripts/SlowMo.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Vortex.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ContrastStretch.cs" />
+     <Compile Include="Assets/Plugins/Crest/Crest-Examples/Shared/Scripts/Collision/OceanSampleHeightEvents.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Fisheye.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/MotionBlur.cs" />
+     <Compile Include="Assets/Plugins/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/CreaseShading.cs" />
      <Reference Include="UnityEngine">
      <HintPath>/Applications/Unity/Hub/Editor/2021.3.30f1/PlaybackEngines/LinuxStandaloneSupport/Variations/mono/Managed/UnityEngine.dll</HintPath>
      </Reference>
@@ -747,6 +688,50 @@
      </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Unity.ML-Agents.Player.csproj">
+      <Project>{7904d078-ef8b-3a46-b98b-68b13cc491c8}</Project>
+      <Name>Unity.ML-Agents.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Barracuda.ONNX.Player.csproj">
+      <Project>{372249ca-5954-10cd-265e-b64427bec569}</Project>
+      <Name>Unity.Barracuda.ONNX.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Barracuda.BurstBLAS.Player.csproj">
+      <Project>{03c50d45-7b57-d472-96d8-91dac371de5e}</Project>
+      <Name>Unity.Barracuda.BurstBLAS.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Barracuda.Player.csproj">
+      <Project>{d345665a-be4d-f916-9f0f-ee32444800df}</Project>
+      <Name>Unity.Barracuda.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Timeline.Player.csproj">
+      <Project>{d4371bc2-92f3-4561-06ce-a31d23b5c27b}</Project>
+      <Name>Unity.Timeline.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.Player.csproj">
+      <Project>{bb983e41-3ab9-b28e-2eb3-f15b9024b0ab}</Project>
+      <Name>Unity.TextMeshPro.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ProBuilder.Player.csproj">
+      <Project>{39eef6fc-bfac-3b5f-ff0a-8ea28cbf53ba}</Project>
+      <Name>Unity.ProBuilder.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.Flow.Player.csproj">
+      <Project>{511c868a-9ede-1802-fdc9-537852b531e6}</Project>
+      <Name>Unity.VisualScripting.Flow.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.Player.csproj">
+      <Project>{914ef66b-c7ae-8a0a-0ac3-2209dae010f9}</Project>
+      <Name>UnityEngine.UI.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.Core.Player.csproj">
+      <Project>{dab282fc-ad15-8158-c1a3-ed608f01982b}</Project>
+      <Name>Unity.VisualScripting.Core.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ML-Agents.CommunicatorObjects.Player.csproj">
+      <Project>{3c944e98-44c7-86ee-971e-7cda3818eb3d}</Project>
+      <Name>Unity.ML-Agents.CommunicatorObjects.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.Player.csproj">
       <Project>{ffcbecc4-3684-af70-94b2-51428ebab250}</Project>
       <Name>Unity.Mathematics.Player</Name>
@@ -755,9 +740,13 @@
       <Project>{2b455e96-62f6-ba4a-1b03-c6c5c7a52bbe}</Project>
       <Name>Unity.Burst.Player</Name>
     </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.Player.csproj">
-      <Project>{914ef66b-c7ae-8a0a-0ac3-2209dae010f9}</Project>
-      <Name>UnityEngine.UI.Player</Name>
+    <ProjectReference Include="Unity.VisualScripting.State.Player.csproj">
+      <Project>{4a88ca9d-d873-2e5f-6276-baa788bbe505}</Project>
+      <Name>Unity.VisualScripting.State.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Crest.Player.csproj">
+      <Project>{b6e6ae19-322c-5aa4-4974-4820e326857f}</Project>
+      <Name>Crest.Player</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

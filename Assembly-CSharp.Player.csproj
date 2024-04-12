@@ -41,68 +41,20 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ColorCorrectionCurves.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ImageEffects.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/EdgeDetection.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Blur.cs" />
      <Compile Include="Assets/MyProject/Scripts/IMRound_V2/Center.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/SunShafts.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/PostEffectsHelper.cs" />
      <Compile Include="Assets/MyProject/Scripts/LEDs.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/DepthOfFieldDeprecated.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Bloom.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/NVJOB Assets/Dynamic Sky Lite/DynamicSkyLite.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/NVJOB Assets/FPS Counter/FPSCounter.cs" />
      <Compile Include="Assets/MyProject/Scripts/IMRound_V2/CenterPoint.cs" />
      <Compile Include="Assets/MyProject/Scripts/FollowCamera.cs" />
      <Compile Include="Assets/MyProject/Scripts/PlayerIM_Round.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/BloomAndFlares.cs" />
      <Compile Include="Assets/MyProject/Scripts/Player_V2.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ScreenOverlay.cs" />
      <Compile Include="Assets/MyProject/Scripts/DirectionalCamera.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/BlurOptimized.cs" />
      <Compile Include="Assets/MyProject/Scripts/ScreenShotCaputurer.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/BloomOptimized.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/DepthOfField.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Simple Boids/NVBoids.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/NoiseAndScratches.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ColorCorrectionLookup.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/NVJOB Assets/Water Shader SAF/Water.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Twirl.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Other/Scripts/TDControl.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Quads.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/TiltShift.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Grayscale.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ColorCorrectionRamp.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Triangles.cs" />
      <Compile Include="Assets/MyProject/Scripts/PlayerIR_V2.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/SepiaTone.cs" />
      <Compile Include="Assets/MyProject/Scripts/IRSensor.cs" />
      <Compile Include="Assets/MyProject/Scripts/PlayerIM_Round_V4.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ContrastEnhance.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/CameraMotionBlur.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/GlobalFog.cs" />
-     <Compile Include="Assets/com/heparo/terrain/toolkit/scripts/TerrainToolkit.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/PostEffectsBase.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Tonemapping.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ScreenSpaceAmbientObscurance.cs" />
      <Compile Include="Assets/MyProject/Scripts/V3/PlayerV3.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/VignetteAndChromaticAberration.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Other/Scripts/Underwater.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ImageEffectBase.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/NoiseAndGrain.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Other/Scripts/Shark.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Antialiasing.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ScreenSpaceAmbientOcclusion.cs" />
      <Compile Include="Assets/MyProject/Scripts/IMRound_V2/Player.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Other/Scripts/SlowMo.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Vortex.cs" />
      <Compile Include="Assets/MyProject/Scripts/PlayerIR_Round.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/ContrastStretch.cs" />
-     <Compile Include="Assets/Crest/Crest-Examples/Shared/Scripts/Collision/OceanSampleHeightEvents.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/Fisheye.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/MotionBlur.cs" />
-     <Compile Include="Assets/#NVJOB Boids/Example Scenes/Standard Assets/Effects/ImageEffects/Scripts/CreaseShading.cs" />
      <Reference Include="UnityEngine">
      <HintPath>/Applications/Unity/Hub/Editor/2021.3.30f1/PlaybackEngines/LinuxStandaloneSupport/Variations/mono/Managed/UnityEngine.dll</HintPath>
      </Reference>
@@ -702,6 +654,10 @@
      </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.Player.csproj">
+      <Project>{b4710559-20d8-d427-ac3f-223948c78e02}</Project>
+      <Name>Assembly-CSharp-firstpass.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.ML-Agents.Player.csproj">
       <Project>{7904d078-ef8b-3a46-b98b-68b13cc491c8}</Project>
       <Name>Unity.ML-Agents.Player</Name>
@@ -738,10 +694,6 @@
       <Project>{914ef66b-c7ae-8a0a-0ac3-2209dae010f9}</Project>
       <Name>UnityEngine.UI.Player</Name>
     </ProjectReference>
-    <ProjectReference Include="Crest.Player.csproj">
-      <Project>{b6e6ae19-322c-5aa4-4974-4820e326857f}</Project>
-      <Name>Crest.Player</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Core.Player.csproj">
       <Project>{dab282fc-ad15-8158-c1a3-ed608f01982b}</Project>
       <Name>Unity.VisualScripting.Core.Player</Name>
@@ -761,6 +713,10 @@
     <ProjectReference Include="Unity.VisualScripting.State.Player.csproj">
       <Project>{4a88ca9d-d873-2e5f-6276-baa788bbe505}</Project>
       <Name>Unity.VisualScripting.State.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Crest.Player.csproj">
+      <Project>{b6e6ae19-322c-5aa4-4974-4820e326857f}</Project>
+      <Name>Crest.Player</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

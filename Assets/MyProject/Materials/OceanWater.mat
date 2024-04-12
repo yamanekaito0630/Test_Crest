@@ -95,7 +95,7 @@ Material:
     - _CausticsFocalDepth: 2
     - _CausticsStrength: 3.2
     - _CausticsTextureAverage: 0.07
-    - _CausticsTextureScale: 5
+    - _CausticsTextureScale: 0
     - _ClipSurface: 0
     - _ClipUnderTerrain: 0
     - _ComputeDirectionalLight: 0

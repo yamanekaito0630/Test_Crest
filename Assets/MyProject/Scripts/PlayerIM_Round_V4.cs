@@ -13,7 +13,7 @@ using Random = UnityEngine.Random;
 public class PlayerIM_Round_V4 : Agent
 {
     // 各種パラメータ
-    public float speed = 450.0f;
+    public float speed = 470.0f;
     public float rotSpeed = 6.0f;
     // public float propulsion = 30.0f;
     public float defaultDrag = 0.0f;
@@ -136,7 +136,7 @@ public class PlayerIM_Round_V4 : Agent
         // SceneManager.LoadScene(0);
 
         playerRb.velocity = Vector3.zero;
-        initRot = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        initRot = Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f);
         
         // 初期化処理
         transform.position = initPos;
@@ -166,7 +166,7 @@ public class PlayerIM_Round_V4 : Agent
         // エピソード開始時に水中ドローンに初期推進力を与える
         // playerRb.AddForce(transform.TransformDirection(new Vector3(0, 200.0f, 200.0f)));
         xRot = 0.0f;
-        yRot = 0.0f;
+        yRot = Random.Range(0.0f, 360.0f);
         zRot = 0.0f;
     }
 
@@ -325,11 +325,9 @@ public class PlayerIM_Round_V4 : Agent
         // float rotXInput = actions.ContinuousActions[3];
         // float rotZInput = actions.ContinuousActions[4];
 
-        // float redInput = actions.ContinuousActions[3];
-        // float blueInput = actions.ContinuousActions[4];
-        float redInput = 0.0f;
-        float blueInput = 0.0f;
-        
+        float redInput = actions.ContinuousActions[3];
+        float blueInput = actions.ContinuousActions[4];
+
         // float rightFrontInput = actions.ContinuousActions[0];
         // float leftFrontInput = actions.ContinuousActions[1];
         // float rightMiddleInput = actions.ContinuousActions[2];
@@ -344,31 +342,23 @@ public class PlayerIM_Round_V4 : Agent
         // leftFrontInput = -0.15f;
         
         // LEDの点灯
-        // if (targetAreaValue == 1.0f)
-        // {
-        //     frontLED.GetComponent<Renderer>().material.color = Color.red;
-        // }
-        // else if(collisionValue == 1.0f)
-        // {
-        //     frontLED.GetComponent<Renderer>().material.color = Color.blue;
-        // }
-        // else
-        // {
-        //     frontLED.GetComponent<Renderer>().material.color = Color.gray;
-        // }
+        if (redInput > 0.0f)
+        {
+            frontLED.GetComponent<Renderer>().material.color = Color.red;
+        }
+        else
+        {
+            frontLED.GetComponent<Renderer>().material.color = Color.gray;
+        }
 
-        // if (targetAreaValue == 1.0f)
-        // {
-        //     backLED.GetComponent<Renderer>().material.color = Color.red;
-        // }
-        // else if(collisionValue == 1.0f)
-        // {
-        //     backLED.GetComponent<Renderer>().material.color = Color.blue;
-        // }
-        // else
-        // {
-        //     backLED.GetComponent<Renderer>().material.color = Color.gray;
-        // }
+        if (blueInput > 0.0f)
+        {
+            backLED.GetComponent<Renderer>().material.color = Color.blue;
+        }
+        else
+        {
+            backLED.GetComponent<Renderer>().material.color = Color.gray;
+        }
         
 
         if (isAboveOcean)
@@ -389,7 +379,11 @@ public class PlayerIM_Round_V4 : Agent
 
         playerRb.AddForce(transform.forward * horizontalInput * speed);
         playerRb.AddForce(transform.up * verticalInput * speed);
-        transform.rotation = Quaternion.AngleAxis(rotYInput * rotSpeed, Vector3.up) * transform.rotation;
+        Vector3 localAngle = this.transform.localRotation.eulerAngles;
+        localAngle.y = yRot;
+        transform.localEulerAngles = localAngle;
+        yRot += rotYInput * rotSpeed;
+        // transform.rotation = Quaternion.AngleAxis(rotYInput * rotSpeed, Vector3.up) * transform.rotation;
 
         float postureReward = (1.0f / (Mathf.Abs(playerRb.transform.rotation.eulerAngles.x) + 1.0f)) + (1.0f / (playerRb.transform.rotation.eulerAngles.z + 1.0f));
         AddReward(postureReward * k7);
@@ -473,8 +467,8 @@ public class PlayerIM_Round_V4 : Agent
         // float rotXInput = Input.GetAxis("Horizontal");
         // float rotZInput = 0.0f;
         //
-        // float redInput = 1.0f;
-        // float blueInput = 0.0f;
+        float redInput = 1.0f;
+        float blueInput = 1.0f;
         
         // float leftFrontInput = Input.GetKey(KeyCode.Q) ? 1.0f : 0.0f;
         // float leftMiddleInput = Input.GetKey(KeyCode.A) ? 1.0f : 0.0f;
@@ -491,8 +485,8 @@ public class PlayerIM_Round_V4 : Agent
         // continuousAct[3] = rotXInput;
         // continuousAct[4] = rotZInput;
 
-        // continuousAct[3] = redInput;
-        // continuousAct[4] = blueInput;
+        continuousAct[3] = redInput;
+        continuousAct[4] = blueInput;
 
         // continuousAct[0] = rightFrontInput;
         // continuousAct[1] = leftFrontInput;
