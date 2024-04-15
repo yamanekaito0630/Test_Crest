@@ -319,64 +319,64 @@
      <HintPath>/Applications/Unity/Hub/Editor/2021.3.30f1/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
      </Reference>
      <Reference Include="System.IO.Abstractions">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/ml-agents-release_20/com.unity.ml-agents/Plugins/System.IO.Abstractions.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/ml-agents-release_20/com.unity.ml-agents/Plugins/System.IO.Abstractions.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Plastic.Newtonsoft.Json">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/Library/PackageCache/com.unity.collab-proxy@2.0.7/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/PackageCache/com.unity.collab-proxy@2.0.7/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
      </Reference>
      <Reference Include="unityplastic">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/Library/PackageCache/com.unity.collab-proxy@2.0.7/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/PackageCache/com.unity.collab-proxy@2.0.7/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Plastic.Antlr3.Runtime">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/Library/PackageCache/com.unity.collab-proxy@2.0.7/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/PackageCache/com.unity.collab-proxy@2.0.7/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.YamlDotNet">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/Library/PackageCache/com.unity.visualscripting@1.9.0/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/PackageCache/com.unity.visualscripting@1.9.0/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Unsafe">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.Unsafe.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.Unsafe.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil.Mdb">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Mdb.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Mdb.dll</HintPath>
      </Reference>
      <Reference Include="Google.Protobuf">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/Library/PackageCache/com.unity.barracuda@3.0.0/Barracuda/Runtime/Plugins/ProtoBuffer/Google.Protobuf.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/PackageCache/com.unity.barracuda@3.0.0/Barracuda/Runtime/Plugins/ProtoBuffer/Google.Protobuf.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.TextureAssets">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/Library/PackageCache/com.unity.visualscripting@1.9.0/Editor/VisualScripting.Core/EditorAssetResources/Unity.VisualScripting.TextureAssets.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/PackageCache/com.unity.visualscripting@1.9.0/Editor/VisualScripting.Core/EditorAssetResources/Unity.VisualScripting.TextureAssets.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.IonicZip">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/Library/PackageCache/com.unity.visualscripting@1.9.0/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/PackageCache/com.unity.visualscripting@1.9.0/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil.Pdb">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll</HintPath>
      </Reference>
      <Reference Include="log4netPlastic">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/Library/PackageCache/com.unity.collab-proxy@2.0.7/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/PackageCache/com.unity.collab-proxy@2.0.7/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil.Rocks">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/Library/PackageCache/com.unity.visualscripting@1.9.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/PackageCache/com.unity.visualscripting@1.9.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
      </Reference>
      <Reference Include="System.IO.Abstractions.TestingHelpers">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/ml-agents-release_20/com.unity.ml-agents/Plugins/System.IO.Abstractions.TestingHelpers.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/ml-agents-release_20/com.unity.ml-agents/Plugins/System.IO.Abstractions.TestingHelpers.dll</HintPath>
      </Reference>
      <Reference Include="ReportGeneratorMerged">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/Library/PackageCache/com.unity.testtools.codecoverage@1.2.4/lib/ReportGenerator/ReportGeneratorMerged.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/PackageCache/com.unity.testtools.codecoverage@1.2.4/lib/ReportGenerator/ReportGeneratorMerged.dll</HintPath>
      </Reference>
      <Reference Include="System.Interactive.Async">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/ml-agents-release_20/com.unity.ml-agents/Plugins/ProtoBuffer/System.Interactive.Async.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/ml-agents-release_20/com.unity.ml-agents/Plugins/ProtoBuffer/System.Interactive.Async.dll</HintPath>
      </Reference>
      <Reference Include="Grpc.Core">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/ml-agents-release_20/com.unity.ml-agents/Plugins/ProtoBuffer/Grpc.Core.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/ml-agents-release_20/com.unity.ml-agents/Plugins/ProtoBuffer/Grpc.Core.dll</HintPath>
      </Reference>
      <Reference Include="nunit.framework">
-     <HintPath>/Users/kaitoyamane/UnityProject/Test_Crest/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
      </Reference>
      <Reference Include="mscorlib">
      <HintPath>/Applications/Unity/Hub/Editor/2021.3.30f1/Unity.app/Contents/UnityReferenceAssemblies/unity-4.8-api/mscorlib.dll</HintPath>
@@ -753,35 +753,30 @@
      <Reference Include="netstandard">
      <HintPath>/Applications/Unity/Hub/Editor/2021.3.30f1/Unity.app/Contents/UnityReferenceAssemblies/unity-4.8-api/Facades/netstandard.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.Barracuda">
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/ScriptAssemblies/Unity.Barracuda.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.UI">
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.UI">
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.TestRunner">
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.TestRunner">
+     <HintPath>/Users/yamane/Desktop/unity_projects/Test_Crest/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.ML-Agents.csproj">
       <Project>{7a4e9241-60f4-e14e-486b-2d56513c4ce9}</Project>
       <Name>Unity.ML-Agents</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Barracuda.csproj">
-      <Project>{476c1d48-7b0e-ca41-e645-3b3ccecf93fb}</Project>
-      <Name>Unity.Barracuda</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.ML-Agents.CommunicatorObjects.csproj">
       <Project>{e0dc3d30-2fbe-9d08-1b7b-efb87293c9b5}</Project>
       <Name>Unity.ML-Agents.CommunicatorObjects</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{9771f4f9-6385-fb14-851f-1bbfaf5cca51}</Project>
-      <Name>UnityEditor.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{7a67c52b-dcc6-3aa1-a8bc-801ba98b5871}</Project>
-      <Name>UnityEngine.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{3d2cdaea-e8e5-8aa9-a246-f3a7246fc37c}</Project>
-      <Name>UnityEngine.TestRunner</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{d5ac7e7f-96b9-f1cd-5c02-a77358379a43}</Project>
-      <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

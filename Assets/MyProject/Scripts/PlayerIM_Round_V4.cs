@@ -14,7 +14,7 @@ public class PlayerIM_Round_V4 : Agent
 {
     // 各種パラメータ
     public float speed = 470.0f;
-    public float rotSpeed = 6.0f;
+    public float rotSpeed = 7.0f;
     // public float propulsion = 30.0f;
     public float defaultDrag = 0.0f;
     public float waterDrag = 20.0f;
