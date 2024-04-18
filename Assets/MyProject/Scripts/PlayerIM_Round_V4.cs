@@ -12,6 +12,10 @@ using Random = UnityEngine.Random;
 
 public class PlayerIM_Round_V4 : Agent
 {
+    // ノード番号
+    public int nodeIndex;
+    public GameObject detactionArea;
+    
     // 各種パラメータ
     public float speed = 470.0f;
     public float rotSpeed = 7.0f;
@@ -206,7 +210,7 @@ public class PlayerIM_Round_V4 : Agent
             if (cptCount % 2 == 1)
             {
                 targetAreaValue = 1.0f;
-                Debug.Log("check1");
+                // Debug.Log("check1");
             }
             // EndEpisode();
         }
@@ -216,7 +220,7 @@ public class PlayerIM_Round_V4 : Agent
             if (cptCount % 2 == 0)
             {
                 targetAreaValue = 1.0f;
-                Debug.Log("check2");
+                // Debug.Log("check2");
             }
             // EndEpisode();
         }
@@ -309,13 +313,22 @@ public class PlayerIM_Round_V4 : Agent
         sensor.AddObservation(fitness6);
         sensor.AddObservation(fitness7);
 
+        // 速度と位置
         sensor.AddObservation(playerRb.velocity.magnitude);
         sensor.AddObservation(playerRb.transform.position);
+        
+        // 他ロボットとのリンク
+        sensor.AddObservation(detactionArea.GetComponent<DetactionArea>().firstNeighborhood);
+        sensor.AddObservation(detactionArea.GetComponent<DetactionArea>().secondNeighborhood);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        Debug.Log(playerRb.velocity.magnitude);
+        if (nodeIndex == 0)
+        {
+            Debug.Log("第1近傍："+detactionArea.GetComponent<DetactionArea>().firstNeighborhood);
+            Debug.Log("第2近傍："+detactionArea.GetComponent<DetactionArea>().secondNeighborhood);
+        }
 
 
         // アクションを取得

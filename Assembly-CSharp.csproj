@@ -55,6 +55,7 @@
      <Compile Include="Assets/MyProject/Scripts/V3/PlayerV3.cs" />
      <Compile Include="Assets/MyProject/Scripts/IMRound_V2/Player.cs" />
      <Compile Include="Assets/MyProject/Scripts/PlayerIR_Round.cs" />
+     <Compile Include="Assets/MyProject/Scripts/DetactionArea.cs" />
      <Folder Include="Assets" />
      <Folder Include="ml-agents-release_20/com.unity.ml-agents/Plugins/ProtoBuffer/runtimes/linux" />
      <Folder Include="Assets/MyProject/Scenes/IR_Test" />

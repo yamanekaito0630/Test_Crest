@@ -17,6 +17,7 @@ TagManager:
   - BoidIn
   - BoidOut
   - CenterPoint
+  - DetactionArea
   layers:
   - Default
   - TransparentFX
