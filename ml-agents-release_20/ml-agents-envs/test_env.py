@@ -9,7 +9,7 @@ from mlagents_envs.side_channel.engine_configuration_channel import EngineConfig
 # Unity環境の生成
 channel = EngineConfigurationChannel()
 channel.set_configuration_parameters(time_scale=1, width=1500, height=600, capture_frame_rate=50)
-env = UnityEnvironment('Test_Crest_App/Linux/app/UnderWaterDrones_IM_Round_12Robots_At4_V3', side_channels=[channel], no_graphics=False, worker_id=50)
+env = UnityEnvironment('Test_Crest_App/Linux/app/UnderWaterDrones_IM_Round_20Robots_At4_V3', side_channels=[channel], no_graphics=False, worker_id=50)
 
 # Unity環境のリセット
 env.reset()
@@ -57,7 +57,7 @@ while True:
         simple_img = cv2.resize(img, (400, 400))[:, :, ::-1]
         #cv2.imwrite('test2_img.png', simple_img)
 
-        action = (np.random.rand(3) * 2.0 - 1.0).reshape(1, 3).astype(np.float32)
+        action = (np.random.rand(5) * 2.0 - 1.0).reshape(1, 5).astype(np.float32)
         # print('action:', action)
         action_tuple = ActionTuple(continuous=action)
         env.set_action_for_agent(behavior_names[0], i, action_tuple)

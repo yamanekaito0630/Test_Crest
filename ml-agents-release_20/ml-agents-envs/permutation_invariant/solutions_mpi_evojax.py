@@ -8,6 +8,7 @@ from mlagents_envs.side_channel.engine_configuration_channel import EngineConfig
 from permutation_invariant.base_solution import BaseSolution
 from permutation_invariant.modules import SelfAttentionMatrix, VisionAttentionNeuronLayer, AttentionNeuronLayer
 
+import csv
 import logging
 import math
 import os
@@ -198,12 +199,6 @@ class BaseTorchSolution(BaseSolution):
         logging.basicConfig(level=logging.DEBUG if debug else logging.INFO, format=log_format)
         logger = logging.getLogger(name)
         if log_dir:
-            if not os.path.isfile(log_dir + '/n_one_robot_arrivals.txt'):
-                os.path.join(log_dir, 'n_one_robot_arrivals.txt')
-
-            if not os.path.isfile(log_dir + '/one_robot_velocities.txt'):
-                os.path.join(log_dir, 'one_robot_velocities.txt')
-
             if not os.path.isfile(log_dir + '/hyper_parameters.txt'):
                 os.path.join(log_dir, 'hyper_parameters.txt')
                 with open(file=log_dir + '/hyper_parameters.txt', mode='a') as f:
@@ -226,7 +221,7 @@ class BaseTorchSolution(BaseSolution):
                             + '\naa_hidden_dim=' + str(self.lstm_hidden_dim)
                             + '\naa_top_k=' + str(self.top_k)
                         )
-                        
+
                     elif base == 'aa':
                         f.write(
                             'file_name=' + self.file_name

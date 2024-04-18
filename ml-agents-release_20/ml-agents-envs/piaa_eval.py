@@ -21,7 +21,7 @@ from mlagents_envs.side_channel.engine_configuration_channel import EngineConfig
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--os', help='Mac or Linux', type=str, default="Linux")
-    parser.add_argument('--n-at', help='Num of attempt', type=int, default=5)
+    parser.add_argument('--n-at', help='Num of attempt', type=int, default=4)
     parser.add_argument('--ns-trial', required=True, nargs="*", help='Num list of trial', type=int)
     parser.add_argument('--ns-robo', required=True, nargs="*", help='Num list of robo', type=int)
     parser.add_argument('--es-robo', required=True, nargs="*", help='Num list of eval robo', type=int)
@@ -45,11 +45,11 @@ def main(config, log_dir, n_at, e_robo, e_version):
 
     device = torch.device('cpu')
     if e_robo == 1:
-        file_name = 'render_apps/UnderWaterDrones_IM_Round_OneRobot_At{at}'.format(at=n_at)
-        # file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, n_at, e_version)
+        # file_name = 'render_apps/UnderWaterDrones_IM_Round_OneRobot_At{at}'.format(at=n_at)
+        file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, n_at, e_version)
     else:
-        file_name = 'render_apps/UnderWaterDrones_IM_Round_{num_robo}Robots_At{at}'.format(num_robo=e_robo, at=n_at)
-        # file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, n_at, e_version)
+        # file_name = 'render_apps/UnderWaterDrones_IM_Round_{num_robo}Robots_At{at}'.format(num_robo=e_robo, at=n_at)
+        file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, n_at, e_version)
 
     agent = PIAttentionAgent(
         device=device,

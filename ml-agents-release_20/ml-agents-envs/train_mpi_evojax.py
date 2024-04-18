@@ -13,7 +13,7 @@ def parse_args():
     parser.add_argument('--t', help='Num of loop', type=int, default=1)
     parser.add_argument('--base', help='piaa, pifc, aa', default='piaa')
     parser.add_argument('--version', help='Number of attenpt', type=int, default=1)
-    parser.add_argument('--n-at', help='Number of attenpt', type=int, default=5)
+    parser.add_argument('--n-at', help='Number of attenpt', type=int, default=4)
     parser.add_argument('--ns-trial', required=True, nargs="*", help='Num list of robo', type=int)
     parser.add_argument('--ns-robo', required=True, nargs="*", help='Num list of robo', type=int)
     parser.add_argument('--n-fitness', help='Number of fitness', type=int, default=7)
@@ -33,7 +33,7 @@ def parse_args():
 
 def main(config):
     device = torch.device('cpu')
-    
+
     for n_robo in config.ns_robo:
         for n_trial in config.ns_trial:
             if config.base == 'piaa':
@@ -46,7 +46,7 @@ def main(config):
                 agent = PIAttentionAgent(
                     device=device,
                     file_name=file_name,
-                    act_dim=3,
+                    act_dim=5,
                     msg_dim=16,
                     pos_em_dim=8,
                     patch_size=6,
