@@ -393,11 +393,11 @@ public class PlayerIM_Round_V1 : Agent
         playerRb.AddForce(transform.forward * horizontalInput * speed);
         playerRb.AddForce(transform.up * verticalInput * speed);
         
-        // Vector3 localAngle = this.transform.localRotation.eulerAngles;
-        // localAngle.y = yRot;
-        // transform.localEulerAngles = localAngle;
-        // yRot += rotYInput * rotSpeed;
-        transform.rotation = Quaternion.AngleAxis(rotYInput * rotSpeed, Vector3.up) * transform.rotation;
+        Vector3 localAngle = this.transform.localRotation.eulerAngles;
+        localAngle.y = yRot;
+        transform.localEulerAngles = localAngle;
+        yRot += rotYInput * rotSpeed;
+        // transform.rotation = Quaternion.AngleAxis(rotYInput * rotSpeed, Vector3.up) * transform.rotation;
 
         float postureReward = (1.0f / (Mathf.Abs(playerRb.transform.rotation.eulerAngles.x) + 1.0f)) + (1.0f / (playerRb.transform.rotation.eulerAngles.z + 1.0f));
         AddReward(postureReward * k7);

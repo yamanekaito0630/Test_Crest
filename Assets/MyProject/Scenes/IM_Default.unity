@@ -5186,8 +5186,8 @@ MonoBehaviour:
   MaxStep: 0
   nodeIndex: 4
   DetactionArea_V1: {fileID: 1201291807}
-  speed: 460
-  rotSpeed: 6
+  speed: 420
+  rotSpeed: 5
   defaultDrag: 0
   waterDrag: 20
   initPos: {x: -3, y: -22, z: 6}
@@ -7848,8 +7848,8 @@ MonoBehaviour:
   MaxStep: 0
   nodeIndex: 8
   DetactionArea_V1: {fileID: 1587132327}
-  speed: 460
-  rotSpeed: 6
+  speed: 420
+  rotSpeed: 5
   defaultDrag: 0
   waterDrag: 20
   initPos: {x: -9, y: -22, z: -6}
@@ -13504,8 +13504,8 @@ MonoBehaviour:
   MaxStep: 0
   nodeIndex: 6
   DetactionArea_V1: {fileID: 772213681}
-  speed: 460
-  rotSpeed: 6
+  speed: 420
+  rotSpeed: 5
   defaultDrag: 0
   waterDrag: 20
   initPos: {x: 3, y: -22, z: 6}
@@ -14264,8 +14264,8 @@ MonoBehaviour:
   MaxStep: 0
   nodeIndex: 2
   DetactionArea_V1: {fileID: 913483833}
-  speed: 460
-  rotSpeed: 6
+  speed: 420
+  rotSpeed: 5
   defaultDrag: 0
   waterDrag: 20
   initPos: {x: 9, y: -22, z: 0}
@@ -17474,7 +17474,7 @@ MonoBehaviour:
   _mode: 0
   _filterOceanData: 13
   _meniscus: 1
-  _depthFogDensityFactor: 0.02
+  _depthFogDensityFactor: 0.01
   _volumeGeometry: {fileID: 0}
   _invertCulling: 0
   _enableShaderAPI: 0
@@ -20151,7 +20151,7 @@ MonoBehaviour:
   _mode: 0
   _filterOceanData: 13
   _meniscus: 1
-  _depthFogDensityFactor: 0.02
+  _depthFogDensityFactor: 0.01
   _volumeGeometry: {fileID: 0}
   _invertCulling: 0
   _enableShaderAPI: 0
@@ -20583,7 +20583,7 @@ MonoBehaviour:
   _mode: 0
   _filterOceanData: 13
   _meniscus: 1
-  _depthFogDensityFactor: 0.02
+  _depthFogDensityFactor: 0.01
   _volumeGeometry: {fileID: 0}
   _invertCulling: 0
   _enableShaderAPI: 0
@@ -21977,8 +21977,8 @@ MonoBehaviour:
   MaxStep: 0
   nodeIndex: 7
   DetactionArea_V1: {fileID: 1319739324}
-  speed: 460
-  rotSpeed: 6
+  speed: 420
+  rotSpeed: 5
   defaultDrag: 0
   waterDrag: 20
   initPos: {x: -9, y: -22, z: 6}
@@ -32476,7 +32476,7 @@ MonoBehaviour:
   _mode: 0
   _filterOceanData: 13
   _meniscus: 1
-  _depthFogDensityFactor: 0.02
+  _depthFogDensityFactor: 0.01
   _volumeGeometry: {fileID: 0}
   _invertCulling: 0
   _enableShaderAPI: 0
@@ -39166,7 +39166,7 @@ MonoBehaviour:
   _mode: 0
   _filterOceanData: 13
   _meniscus: 1
-  _depthFogDensityFactor: 0.02
+  _depthFogDensityFactor: 0.01
   _volumeGeometry: {fileID: 0}
   _invertCulling: 0
   _enableShaderAPI: 0
@@ -45428,7 +45428,7 @@ MonoBehaviour:
   _mode: 0
   _filterOceanData: 13
   _meniscus: 1
-  _depthFogDensityFactor: 0.02
+  _depthFogDensityFactor: 0.01
   _volumeGeometry: {fileID: 0}
   _invertCulling: 0
   _enableShaderAPI: 0
@@ -45532,7 +45532,7 @@ MonoBehaviour:
   _mode: 0
   _filterOceanData: 13
   _meniscus: 1
-  _depthFogDensityFactor: 0.02
+  _depthFogDensityFactor: 0.01
   _volumeGeometry: {fileID: 0}
   _invertCulling: 0
   _enableShaderAPI: 0
@@ -45936,8 +45936,8 @@ MonoBehaviour:
   MaxStep: 0
   nodeIndex: 11
   DetactionArea_V1: {fileID: 169452908}
-  speed: 460
-  rotSpeed: 6
+  speed: 420
+  rotSpeed: 5
   defaultDrag: 0
   waterDrag: 20
   initPos: {x: 9, y: -22, z: -6}
@@ -48824,7 +48824,7 @@ MonoBehaviour:
   _mode: 0
   _filterOceanData: 13
   _meniscus: 1
-  _depthFogDensityFactor: 0.02
+  _depthFogDensityFactor: 0.01
   _volumeGeometry: {fileID: 0}
   _invertCulling: 0
   _enableShaderAPI: 0
@@ -49216,8 +49216,8 @@ MonoBehaviour:
   MaxStep: 0
   nodeIndex: 10
   DetactionArea_V1: {fileID: 1305135936}
-  speed: 460
-  rotSpeed: 6
+  speed: 420
+  rotSpeed: 5
   defaultDrag: 0
   waterDrag: 20
   initPos: {x: -3, y: -22, z: -6}
@@ -51392,7 +51392,7 @@ MonoBehaviour:
   _mode: 0
   _filterOceanData: 13
   _meniscus: 1
-  _depthFogDensityFactor: 0.02
+  _depthFogDensityFactor: 0.01
   _volumeGeometry: {fileID: 0}
   _invertCulling: 0
   _enableShaderAPI: 0
@@ -51913,8 +51913,8 @@ MonoBehaviour:
   MaxStep: 0
   nodeIndex: 5
   DetactionArea_V1: {fileID: 2075493600}
-  speed: 460
-  rotSpeed: 6
+  speed: 420
+  rotSpeed: 5
   defaultDrag: 0
   waterDrag: 20
   initPos: {x: 9, y: -22, z: 6}
@@ -68754,7 +68754,7 @@ MonoBehaviour:
   _mode: 0
   _filterOceanData: 13
   _meniscus: 1
-  _depthFogDensityFactor: 0.02
+  _depthFogDensityFactor: 0.01
   _volumeGeometry: {fileID: 0}
   _invertCulling: 0
   _enableShaderAPI: 0
@@ -74782,8 +74782,8 @@ MonoBehaviour:
   MaxStep: 0
   nodeIndex: 1
   DetactionArea_V1: {fileID: 1481862829}
-  speed: 460
-  rotSpeed: 6
+  speed: 420
+  rotSpeed: 5
   defaultDrag: 0
   waterDrag: 20
   initPos: {x: -3, y: -22, z: 0}
@@ -75697,8 +75697,8 @@ MonoBehaviour:
   MaxStep: 0
   nodeIndex: 9
   DetactionArea_V1: {fileID: 22858604}
-  speed: 460
-  rotSpeed: 6
+  speed: 420
+  rotSpeed: 5
   defaultDrag: 0
   waterDrag: 20
   initPos: {x: 3, y: -22, z: -6}
@@ -77139,8 +77139,8 @@ MonoBehaviour:
   MaxStep: 0
   nodeIndex: 0
   DetactionArea_V1: {fileID: 445435678}
-  speed: 460
-  rotSpeed: 6
+  speed: 420
+  rotSpeed: 5
   defaultDrag: 0
   waterDrag: 20
   initPos: {x: 3, y: -22, z: 0}
@@ -79054,7 +79054,7 @@ MonoBehaviour:
   _mode: 0
   _filterOceanData: 13
   _meniscus: 1
-  _depthFogDensityFactor: 0.02
+  _depthFogDensityFactor: 0.01
   _volumeGeometry: {fileID: 0}
   _invertCulling: 0
   _enableShaderAPI: 0
@@ -92618,7 +92618,7 @@ MonoBehaviour:
   _mode: 0
   _filterOceanData: 13
   _meniscus: 1
-  _depthFogDensityFactor: 0.02
+  _depthFogDensityFactor: 0.01
   _volumeGeometry: {fileID: 0}
   _invertCulling: 0
   _enableShaderAPI: 0
@@ -95496,8 +95496,8 @@ MonoBehaviour:
   MaxStep: 0
   nodeIndex: 3
   DetactionArea_V1: {fileID: 1227187717}
-  speed: 460
-  rotSpeed: 6
+  speed: 420
+  rotSpeed: 5
   defaultDrag: 0
   waterDrag: 20
   initPos: {x: -9, y: -22, z: 0}
