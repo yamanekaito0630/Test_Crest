@@ -54,10 +54,10 @@
      <Compile Include="Assets/MyProject/Scripts/PlayerScripts/PlayerIR_V2.cs" />
      <Compile Include="Assets/MyProject/Scripts/IRSensor.cs" />
      <Compile Include="Assets/MyProject/Scripts/PlayerScripts/PlayerIM_Round_V4.cs" />
+     <Compile Include="Assets/MyProject/Scripts/DetactionAreaScripts/DetactionArea_V1.cs" />
      <Compile Include="Assets/MyProject/Scripts/V3/PlayerV3.cs" />
      <Compile Include="Assets/MyProject/Scripts/IMRound_V2/Player.cs" />
      <Compile Include="Assets/MyProject/Scripts/PlayerScripts/PlayerIR_Round.cs" />
-     <Compile Include="Assets/MyProject/Scripts/DetactionAreaScripts/DetactionArea_V1.cs" />
      <Folder Include="Assets" />
      <Folder Include="ml-agents-release_20/com.unity.ml-agents/Plugins/ProtoBuffer/runtimes/linux" />
      <Folder Include="Assets/MyProject/Scenes/IR_Test" />
