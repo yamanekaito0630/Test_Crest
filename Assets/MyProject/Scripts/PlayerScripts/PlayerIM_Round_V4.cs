@@ -317,17 +317,28 @@ public class PlayerIM_Round_V4 : Agent
         sensor.AddObservation(playerRb.velocity.magnitude);
         sensor.AddObservation(playerRb.transform.position);
         
-        // 他ロボットとのリンク
+        // 速度ベクトル
+        sensor.AddObservation(playerRb.velocity);
+        
+        // 他ロボットとのリンク（第6近傍まで）
         sensor.AddObservation(detactionArea.GetComponent<DetactionArea>().firstNeighborhood);
         sensor.AddObservation(detactionArea.GetComponent<DetactionArea>().secondNeighborhood);
+        sensor.AddObservation(detactionArea.GetComponent<DetactionArea>().thirdNeighborhood);
+        sensor.AddObservation(detactionArea.GetComponent<DetactionArea>().fourthNeighborhood);
+        sensor.AddObservation(detactionArea.GetComponent<DetactionArea>().fifthNeighborhood);
+        sensor.AddObservation(detactionArea.GetComponent<DetactionArea>().sixthNeighborhood);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
     {
         if (nodeIndex == 0)
         {
-            Debug.Log("第1近傍："+detactionArea.GetComponent<DetactionArea>().firstNeighborhood);
-            Debug.Log("第2近傍："+detactionArea.GetComponent<DetactionArea>().secondNeighborhood);
+            Debug.Log("第1近傍：" + detactionArea.GetComponent<DetactionArea>().firstNeighborhood);
+            Debug.Log("第2近傍：" + detactionArea.GetComponent<DetactionArea>().secondNeighborhood);
+            Debug.Log("第3近傍：" + detactionArea.GetComponent<DetactionArea>().thirdNeighborhood);
+            Debug.Log("第4近傍：" + detactionArea.GetComponent<DetactionArea>().fourthNeighborhood);
+            Debug.Log("第5近傍：" + detactionArea.GetComponent<DetactionArea>().fifthNeighborhood);
+            Debug.Log("第6近傍：" + detactionArea.GetComponent<DetactionArea>().sixthNeighborhood);
         }
 
 

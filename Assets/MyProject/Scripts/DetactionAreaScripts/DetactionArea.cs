@@ -7,6 +7,10 @@ public class DetactionArea : MonoBehaviour
     private List<GameObject> nearbyObjects = new List<GameObject>();
     public Vector2 firstNeighborhood;
     public Vector2 secondNeighborhood;
+    public Vector2 thirdNeighborhood;
+    public Vector2 fourthNeighborhood;
+    public Vector2 fifthNeighborhood;
+    public Vector2 sixthNeighborhood;
     
     void OnTriggerEnter(Collider other)
     {
@@ -36,6 +40,22 @@ public class DetactionArea : MonoBehaviour
                 mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
                 (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
             );
+            thirdNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            fourthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            fifthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            sixthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
         }
         else if (nearbyObjects.Count == 2)
         {
@@ -44,6 +64,130 @@ public class DetactionArea : MonoBehaviour
                 (nearbyObjects[1]).GetComponent<PlayerIM_Round_V4>().nodeIndex
             );
             secondNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            thirdNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            fourthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            fifthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            sixthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+        }
+        else if (nearbyObjects.Count == 3)
+        {
+            firstNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[1]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            secondNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[2]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            thirdNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            fourthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            fifthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            sixthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+        }
+        else if (nearbyObjects.Count == 4)
+        {
+            firstNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[1]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            secondNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[2]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            thirdNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[3]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            fourthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            fifthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            sixthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+        }
+        else if (nearbyObjects.Count == 5)
+        {
+            firstNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[1]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            secondNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[2]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            thirdNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[3]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            fourthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[4]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            fifthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            sixthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+        }
+        else if (nearbyObjects.Count == 6)
+        {
+            firstNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[1]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            secondNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[2]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            thirdNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[3]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            fourthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[4]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            fifthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[5]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            sixthNeighborhood = new Vector2(
                 mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
                 (nearbyObjects[0]).GetComponent<PlayerIM_Round_V4>().nodeIndex
             );
@@ -56,11 +200,27 @@ public class DetactionArea : MonoBehaviour
             firstNeighborhood = new Vector2(
                 mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
                 (nearbyObjects[1]).GetComponent<PlayerIM_Round_V4>().nodeIndex
-                );
+            );
             secondNeighborhood = new Vector2(
                 mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
                 (nearbyObjects[2]).GetComponent<PlayerIM_Round_V4>().nodeIndex
-                );
+            );
+            thirdNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[3]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            fourthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[4]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            fifthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[5]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
+            sixthNeighborhood = new Vector2(
+                mySelf.GetComponent<PlayerIM_Round_V4>().nodeIndex,
+                (nearbyObjects[6]).GetComponent<PlayerIM_Round_V4>().nodeIndex
+            );
         }
     }
 }
