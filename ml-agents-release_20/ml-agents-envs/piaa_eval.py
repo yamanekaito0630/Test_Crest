@@ -11,6 +11,7 @@ import argparse
 import sys
 import pickle
 import utils as u
+import gc
 
 from pyvirtualdisplay import Display
 from permutation_invariant.solutions_mpi_evojax import PIAttentionAgent
@@ -27,12 +28,13 @@ def parse_args():
     parser.add_argument('--es-robo', required=True, nargs="*", help='Num list of eval robo', type=int)
     parser.add_argument('--versions', required=True, nargs="*", help='Num list of versions', type=int)
     parser.add_argument('--eval-version', required=True, help='eval version', type=int)
-    parser.add_argument('--load-model', help='Select model file', default='Iter_1000.npz')
+    parser.add_argument('--load-model', help='Select model file', default='Iter_500.npz')
     parser.add_argument('--n-fitness', help='Num of Fitness', type=int, default=4)
     parser.add_argument('--steps', help='Steps for eval', type=int, default=1000)
-    parser.add_argument('--reps', help='repeats of recode', type=int, default=3)
+    parser.add_argument('--reps', help='repeats of recode', type=int, default=1)
     parser.add_argument('--env-name', help='name of environment', type=str, default="default")
     parser.add_argument('--exclude-other-envs', help='True or False', type=int, default=0)
+    parser.add_argument('--save-movies', help='True or False', type=int, default=1)
     parser.add_argument('--headless', help='True or False', type=int, default=1)
     config, _ = parser.parse_known_args()
     return config
@@ -54,7 +56,7 @@ def main(config, log_dir, n_at, e_robo, e_version):
     agent = PIAttentionAgent(
         device=device,
         file_name=file_name,
-        act_dim=3,
+        act_dim=5,
         msg_dim=16,
         pos_em_dim=8,
         patch_size=6,
@@ -78,51 +80,102 @@ def main(config, log_dir, n_at, e_robo, e_version):
     n_recode = 0
 
     xs, ys, zs = [], [], []
-    rss, gss, bss, impss = [], [], [], []
+    rss, gss, bss = [], [], []
+
+    obs_actions, obs_leds = [], []
+    z_actions = []
+    
+    # episode_actions = []
+    # episode_color_counts = []
+    # episode_nodes, episode_links = [], []
+    # timestep_nodes, timestep_links = {}, []
 
     while True:
+        start = time.time()
         for i in decision_steps.agent_id:
-            camera_obs = np.transpose(agent.img_scale(decision_steps.obs[0][i] * 255), (2, 1, 0))
-            action = agent.get_action(camera_obs)
-
-            # print('action:', action)
+            input_image = agent.img_scale(decision_steps.obs[0][i] * 255)
+            obs = np.transpose(input_image, (2, 1, 0))
+            action = agent.get_action(obs)
             action_tuple = ActionTuple(continuous=np.expand_dims(action, axis=0))
             env.set_action_for_agent(behavior_names[0], i, action_tuple)
+            if counter > 0:
+                rs, gs, bs = agent.show_gui(obs=input_image, counter=counter, path="log/")
+                top_color = u.get_top_color(rs, gs, bs)
+                obs_actions.append([action[1], action[2], top_color])
+                obs_leds.append([action[3], action[4], top_color])
+                z_actions.append(np.abs(action[2]))
 
-            xs.append(decision_steps.obs[1][i][config.n_fitness + 1:][0])
-            ys.append(decision_steps.obs[1][i][config.n_fitness + 1:][1])
-            zs.append(decision_steps.obs[1][i][config.n_fitness + 1:][2])
+                # rss += rs
+                # gss += gs
+                # bss += bs
+
+                del rs, gs, bs
+                gc.collect()
+            
+
+            # print('action:', action)
+
+            # xs.append(decision_steps.obs[1][i][config.n_fitness + 1:][0])
+            # ys.append(decision_steps.obs[1][i][config.n_fitness + 1:][1])
+            # zs.append(decision_steps.obs[1][i][config.n_fitness + 1:][2])
+            
+            # node_index = decision_steps.obs[1][i][config.n_fitness + 4 : config.n_fitness + 6][0]
+            # coordinate = decision_steps.obs[1][i][config.n_fitness + 1 : config.n_fitness + 4]
+            # timestep_nodes[node_index] = coordinate
+            # timestep_links.append(tuple(decision_steps.obs[1][i][config.n_fitness + 4 : config.n_fitness + 6]))
+            # timestep_links.append(tuple(decision_steps.obs[1][i][config.n_fitness + 6 : config.n_fitness + 8]))
+        # episode_nodes.append(timestep_nodes)
+        # episode_links.append(timestep_links)
+        # timestep_nodes, timestep_links = {}, []
         env.step()
-        img = agent.img_scale(decision_steps.obs[0][0] * 255)
+        # img = agent.img_scale(decision_steps.obs[0][0] * 255)
 
         # 入力値（画像）
         # simple_img = cv2.resize(img, (400, 400))[:, :, ::-1]
         # cv2.imwrite('simple_obs/img_' + str(counter) + '.png', simple_img)
 
-        rs, gs, bs, imps = agent.show_gui(obs=img, counter=counter, path="log/")
-        rss += rs
-        gss += gs
-        bss += bs
-        impss += imps
+        # timestep_color_counts = np.zeros(8)
+        # rs, gs, bs= agent.show_gui(obs=img, counter=counter, path="log/")
+        
+        # rss += rs
+        # gss += gs
+        # bss += bs
 
         counter += 1
         decision_steps, terminal_steps = env.get_steps(behavior_names[0])
         print('steps:', counter)
+        end = time.time()
+        print(end - start, "[s]")
         if counter % config.steps == 0:
-            robots_coordinates = np.array([xs, ys, zs])
-            pickle.dump(robots_coordinates, open(save_path + 'robots_coordinates_{}.pkl'.format(n_recode), 'wb'))
-            u.coordinates_heatmap_creator(path=save_path, coordinates=robots_coordinates, n_recode=n_recode)
-            u.z_t_creator(path=save_path, n_recode=n_recode, coordinates=robots_coordinates, n_robo=e_robo)
+            # robots_coordinates = np.array([xs, ys, zs])
+            # pickle.dump(robots_coordinates, open(save_path + 'robots_coordinates_{}.pkl'.format(n_recode), 'wb'))
+            # pickle.dump(episode_nodes, open(save_path + 'episode_nodes_{}.pkl'.format(n_recode), 'wb'))
+            # pickle.dump(episode_links, open(save_path + 'episode_links_{}.pkl'.format(n_recode), 'wb'))
+            pickle.dump(obs_actions, open(save_path + 'obs_actions_{}.pkl'.format(n_recode), 'wb'))
+            pickle.dump(obs_leds, open(save_path + 'obs_leds_{}.pkl'.format(n_recode), 'wb'))
+            pickle.dump(z_actions, open(save_path + 'z_actions_{}.pkl'.format(n_recode), 'wb'))
+            # u.coordinates_heatmap_creator(path=save_path, coordinates=robots_coordinates, n_recode=n_recode)
+            # u.z_t_creator(path=save_path, n_recode=n_recode, coordinates=robots_coordinates, n_robo=e_robo, timesteps=config.steps)
 
-            apm = (rss, gss, bss, impss)
-            pickle.dump(apm, open(save_path + 'ap_material_{}.pkl'.format(n_recode), 'wb'))
-            u.at_scatter_creator(path=save_path, n_recode=n_recode, apm=apm)
+            # apm = (rss, gss, bss)
+            # pickle.dump(apm, open(save_path + 'ap_material_{}.pkl'.format(n_recode), 'wb'))
+            # u.at_scatter_creator(path=save_path, n_recode=n_recode, apm=apm)
 
             n_recode += 1
             env.reset()
+            
+            # del robots_coordinates, episode_nodes, episode_links, apm, xs, ys, zs, rss, gss, bss, episode_actions, episode_color_counts
+            # del apm, rss, gss, bss
+            del obs_actions, obs_leds, z_actions, xs, ys, zs
+            gc.collect()
 
             xs, ys, zs = [], [], []
-            rss, gss, bss, impss = [], [], [], []
+            rss, gss, bss = [], [], []
+            obs_actions, obs_leds = [], []
+            z_actions = []
+            # episode_actions = []
+            # episode_color_counts = []
+            # episode_nodes, episode_links = [], []
 
             if n_recode >= config.reps:
                 env.close()
@@ -131,11 +184,13 @@ def main(config, log_dir, n_at, e_robo, e_version):
 
 if __name__ == '__main__':
     args = parse_args()
+    print("test")
     d = Display()
     if args.headless:
         d.start()
 
     for n_robo in args.ns_robo:
+        print("n_robo=", n_robo)
         for n_version in args.versions:
             for n_trial in args.ns_trial:
                 log_dir = "log/at{at}/{n_robo}robo/v{version}/trial_{n_trial}/".format(at=args.n_at, n_robo=n_robo, version=n_version, n_trial=n_trial)
@@ -145,18 +200,18 @@ if __name__ == '__main__':
                     time.sleep(5)
 
                 for e_robo in args.es_robo:
+                    print("e_robo=", e_robo)
                     if args.exclude_other_envs:
                         if e_robo != n_robo:
                             continue
 
                     main(args, log_dir, args.n_at, e_robo, args.eval_version)
 
-                    res_1 = subprocess.run(
-                        "sh recode_pi_behave.sh {} {} {} {} {} {}".format(args.n_at, n_robo, n_version, e_robo, n_trial, args.env_name), shell=True)
-                    print("res_1:", res_1.returncode)
-                    res_2 = subprocess.run(
-                        "sh recode_pi_attention.sh {} {} {} {} {} {}".format(args.n_at, n_robo, n_version, e_robo, n_trial, args.env_name), shell=True)
-                    print("res_2:", res_2.returncode)
+                    if args.save_movies:
+                        res_1 = subprocess.run("sh recode_pi_behave.sh {} {} {} {} {} {}".format(args.n_at, n_robo, n_version, e_robo, n_trial, args.env_name), shell=True)
+                        print("res_1:", res_1.returncode)
+                        res_2 = subprocess.run("sh recode_pi_attention.sh {} {} {} {} {} {}".format(args.n_at, n_robo, n_version, e_robo, n_trial, args.env_name), shell=True)
+                        print("res_2:", res_2.returncode)
 
     if args.headless:
         d.stop()

@@ -1,7 +1,11 @@
 import cv2
 import numpy as np
+import torch
+
 from mlagents_envs.environment import ActionTuple, UnityEnvironment
 from mlagents_envs.side_channel.engine_configuration_channel import EngineConfigurationChannel
+
+print("is_cuda_available: ", torch.cuda.is_available())
 
 # d = Display()
 # d.start()

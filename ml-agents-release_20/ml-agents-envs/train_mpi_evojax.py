@@ -100,7 +100,8 @@ def main(config):
                 log_dir=log_dir,
                 seed=config.seed,
                 init_best=config.init_best,
-                n_fitness=config.n_fitness
+                n_fitness=config.n_fitness,
+                load_model=config.load_model
             )
 
 

@@ -20,7 +20,7 @@ def parse_args():
     parser.add_argument('--trials', required=True, nargs="*", help='Set of trial', type=int)
     parser.add_argument('--ns-robo', required=True, nargs="*", help='Num list of robo', type=int)
     parser.add_argument('--es-robo', required=True, nargs="*", help='Num list of eval robo', type=int)
-    parser.add_argument('--load-model', help='Path to model file.', default='Iter_1000.npz')
+    parser.add_argument('--load-model', help='Path to model file.', default='Iter_500.npz')
     parser.add_argument('--n-fitness', help='Number of fitness', type=int, default=4)
     parser.add_argument('--num-eval', help='Number of eval', type=int, default=10)
     parser.add_argument('--worker-id', help='Worker Id', type=int, default=0)
@@ -34,16 +34,16 @@ def main(config, log_dir, n_robo, e_robo, path):
     device = torch.device('cpu')
     
     if e_robo == 1:
-        # file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, config.n_at, config.eval_version)
-        file_name = 'apps/UnderWaterDrones_IM_Round_OneRobot_At{at}'.format(at=config.n_at)
+        file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, config.n_at, config.eval_version)
+        # file_name = 'apps/UnderWaterDrones_IM_Round_OneRobot_At{at}'.format(at=config.n_at)
     else:
-        # file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, config.n_at, config.eval_version)
-        file_name = 'apps/UnderWaterDrones_IM_Round_{num_robo}Robots_At{at}'.format(num_robo=e_robo, at=config.n_at)
+        file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, config.n_at, config.eval_version)
+        # file_name = 'apps/UnderWaterDrones_IM_Round_{num_robo}Robots_At{at}'.format(num_robo=e_robo, at=config.n_at)
 
     agent = PIAttentionAgent(
         device=device,
         file_name=file_name,
-        act_dim=3,
+        act_dim=5,
         msg_dim=16,
         pos_em_dim=8,
         patch_size=6,

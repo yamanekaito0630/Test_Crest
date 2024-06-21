@@ -293,6 +293,7 @@ class BaseTorchSolution(BaseSolution):
               seed: int = 42,
               init_best: float = -float('Inf'),
               n_fitness: int = 4,
+              load_model = None
               ):
         ii32 = np.iinfo(np.int32)
         rnd = np.random.RandomState(seed=seed)
@@ -314,6 +315,12 @@ class BaseTorchSolution(BaseSolution):
             if base == 'aa':
                 print('#num_patches={}'.format(self.num_patches))
             print('#params={}'.format(num_params))
+            if load_model is not None:
+                self.load(load_model)
+                print('Loaded model from {}'.format(load_model))
+                init_params = self.get_params()
+            else:
+                init_params = num_params * [0]
             if is_resume:
                 print("is_resume: True")
                 solver = pickle.load(open(log_dir + '/gen_es/es_' + algo + '_{}.pkl'.format(from_iter - 1), 'rb'))
@@ -367,6 +374,7 @@ class BaseTorchSolution(BaseSolution):
                 elif algo == 'cma':
                     solver = CMAES(
                         num_params=num_params,
+                        init_params=init_params,
                         sigma_init=0.10,
                         popsize=size * t,
                         weight_decay=0.01
@@ -580,21 +588,9 @@ class PIAttentionAgent(BaseTorchSolution):
         num_patches = img.shape[0] // self.patch_size
         black_img = img * np.array([0, 0, 0])
 
-        counter_0 = 0
-        counter_1 = 0
-        counter_2 = 0
-        counter_3 = 0
-        counter_4 = 0
-        counter_5 = 0
-        counter_6 = 0
-        counter_7 = 0
-        counter_8 = 0
-        counter_9 = 0
-
         rs = []
         gs = []
         bs = []
-        imps = []
 
         for ix in attention_patch_ix:
             row_ix = ix // num_patches
@@ -604,51 +600,9 @@ class PIAttentionAgent(BaseTorchSolution):
             row_ee = row_ss + self.patch_size
             col_ee = col_ss + self.patch_size
 
-            # パッチ保存
-            # patch = cv2.resize(img[row_ss:row_ee, col_ss:col_ee], (400, 400))[:, :, ::-1]
-
             rs += (img[row_ss:row_ee, col_ss:col_ee][:, :, 0]).flatten().tolist()
             gs += (img[row_ss:row_ee, col_ss:col_ee][:, :, 1]).flatten().tolist()
             bs += (img[row_ss:row_ee, col_ss:col_ee][:, :, 2]).flatten().tolist()
-            imp = [patches_importance_vector[ix] for _ in range(self.patch_size ** 2)]
-            imps += imp
-
-            if patches_importance_vector[ix] <= 85:
-                save_path = path + 'importance_0-25'
-                counter_0 += 1
-            elif patches_importance_vector[ix] <= 170:
-                save_path = path + 'importance_25-50'
-                counter_1 += 1
-            elif patches_importance_vector[ix] > 170:
-                save_path = path + 'importance_50-75'
-                counter_2 += 1
-            elif patches_importance_vector[ix] <= 100:
-                save_path = path + 'importance_75-100'
-                counter_3 += 1
-            elif patches_importance_vector[ix] <= 125:
-                save_path = path + 'importance_100-125'
-                counter_4 += 1
-            elif patches_importance_vector[ix] <= 150:
-                save_path = path + 'importance_125-150'
-                counter_5 += 1
-            elif patches_importance_vector[ix] <= 175:
-                save_path = path + 'importance_150-175'
-                counter_6 += 1
-            elif patches_importance_vector[ix] <= 200:
-                save_path = path + 'importance_175-200'
-                counter_7 += 1
-            elif patches_importance_vector[ix] <= 225:
-                save_path = path + 'importance_200-225'
-                counter_8 += 1
-            else:
-                save_path = path + 'importance_225_250'
-                counter_9 += 1
-
-            # if path and not os.path.exists(save_path):
-            #     os.makedirs(save_path)
-
-            # cv2.imwrite(save_path + '/img_' + str(counter) + '_' + str(ix) + '.png', patch)
-            # cv2.waitKey(1)
 
             if patches_importance_vector[ix] <= 0:
                 patches_importance_vector[ix] = 0
@@ -660,7 +614,7 @@ class PIAttentionAgent(BaseTorchSolution):
             img[row_ss:row_ee, col_ss:col_ee] = (
                 0.5 * img[row_ss:row_ee, col_ss:col_ee] + 0.5 * attention_patch * [255, importance, 0])
 
-        ap = (rs, gs, bs, imps)
+        ap = (rs, gs, bs)
         return img.astype(np.uint8), black_img.astype(np.uint8), ap
 
     def show_gui(self, obs, counter, path):
@@ -677,22 +631,22 @@ class PIAttentionAgent(BaseTorchSolution):
                 img=obs, path=path, counter=counter, attention_patch_ix=attended_patch_ix,
                 patches_importance_vector=patches_importance_vector)
 
-        img = cv2.resize(obs, (400, 400))[:, :, ::-1]
-        black_img = cv2.resize(black_img, (400, 400))[:, :, ::-1]
+        # img = cv2.resize(obs, (400, 400))[:, :, ::-1]
+        # black_img = cv2.resize(black_img, (400, 400))[:, :, ::-1]
         # obs保存
-        save_path = path + 'attention_gui'
-        if path and not os.path.exists(save_path):
-            os.makedirs(save_path)
-        cv2.imwrite(save_path + '/img_' + str(counter) + '.png', img)
-        cv2.imshow('render', img)
-        cv2.waitKey(1)
+        # save_path = path + 'attention_gui'
+        # if path and not os.path.exists(save_path):
+        #     os.makedirs(save_path)
+        # cv2.imwrite(save_path + '/img_' + str(counter) + '.png', img)
+        # cv2.imshow('render', img)
+        # cv2.waitKey(1)
 
-        save_path = path + 'attention_black_gui'
-        if path and not os.path.exists(save_path):
-            os.makedirs(save_path)
-        cv2.imwrite(save_path + '/img_' + str(counter) + '.png', black_img)
-        cv2.imshow('render', black_img)
-        cv2.waitKey(1)
+        # save_path = path + 'attention_black_gui'
+        # if path and not os.path.exists(save_path):
+        #     os.makedirs(save_path)
+        # cv2.imwrite(save_path + '/img_' + str(counter) + '.png', black_img)
+        # cv2.imshow('render', black_img)
+        # cv2.waitKey(1)
         gc.collect()
 
         return ap
