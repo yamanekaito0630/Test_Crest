@@ -47,11 +47,17 @@ def main(config, log_dir, n_at, e_robo, e_version):
 
     device = torch.device('cpu')
     if e_robo == 1:
-        # file_name = 'render_apps/UnderWaterDrones_IM_Round_OneRobot_At{at}'.format(at=n_at)
-        file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, n_at, e_version)
+        if config.env_name == "default":
+            # file_name = 'render_apps/UnderWaterDrones_IM_Round_OneRobot_At{at}'.format(at=n_at)
+            file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, n_at, e_version)
+        else:
+            file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}_{}'.format(config.os, n_at, e_version, config.env_name)
     else:
-        # file_name = 'render_apps/UnderWaterDrones_IM_Round_{num_robo}Robots_At{at}'.format(num_robo=e_robo, at=n_at)
-        file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, n_at, e_version)
+        if config.env_name == "default":
+            # file_name = 'render_apps/UnderWaterDrones_IM_Round_{num_robo}Robots_At{at}'.format(num_robo=e_robo, at=n_at)
+            file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, n_at, e_version)
+        else:
+            file_name = 'Test_Crest_App/{}/render_app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}_{}'.format(config.os, e_robo, n_at, e_version, config.env_name)
 
     agent = PIAttentionAgent(
         device=device,
@@ -85,8 +91,6 @@ def main(config, log_dir, n_at, e_robo, e_version):
     obs_actions, obs_leds = [], []
     z_actions = []
     
-    # episode_actions = []
-    # episode_color_counts = []
     # episode_nodes, episode_links = [], []
     # timestep_nodes, timestep_links = {}, []
 
@@ -105,9 +109,9 @@ def main(config, log_dir, n_at, e_robo, e_version):
                 obs_leds.append([action[3], action[4], top_color])
                 z_actions.append(np.abs(action[2]))
 
-                # rss += rs
-                # gss += gs
-                # bss += bs
+                rss += rs
+                gss += gs
+                bss += bs
 
                 del rs, gs, bs
                 gc.collect()
@@ -115,9 +119,9 @@ def main(config, log_dir, n_at, e_robo, e_version):
 
             # print('action:', action)
 
-            # xs.append(decision_steps.obs[1][i][config.n_fitness + 1:][0])
-            # ys.append(decision_steps.obs[1][i][config.n_fitness + 1:][1])
-            # zs.append(decision_steps.obs[1][i][config.n_fitness + 1:][2])
+            xs.append(decision_steps.obs[1][i][config.n_fitness + 1:][0])
+            ys.append(decision_steps.obs[1][i][config.n_fitness + 1:][1])
+            zs.append(decision_steps.obs[1][i][config.n_fitness + 1:][2])
             
             # node_index = decision_steps.obs[1][i][config.n_fitness + 4 : config.n_fitness + 6][0]
             # coordinate = decision_steps.obs[1][i][config.n_fitness + 1 : config.n_fitness + 4]
@@ -147,34 +151,32 @@ def main(config, log_dir, n_at, e_robo, e_version):
         end = time.time()
         print(end - start, "[s]")
         if counter % config.steps == 0:
-            # robots_coordinates = np.array([xs, ys, zs])
-            # pickle.dump(robots_coordinates, open(save_path + 'robots_coordinates_{}.pkl'.format(n_recode), 'wb'))
+            robots_coordinates = np.array([xs, ys, zs])
+            pickle.dump(robots_coordinates, open(save_path + 'robots_coordinates_{}.pkl'.format(n_recode), 'wb'))
             # pickle.dump(episode_nodes, open(save_path + 'episode_nodes_{}.pkl'.format(n_recode), 'wb'))
             # pickle.dump(episode_links, open(save_path + 'episode_links_{}.pkl'.format(n_recode), 'wb'))
             pickle.dump(obs_actions, open(save_path + 'obs_actions_{}.pkl'.format(n_recode), 'wb'))
             pickle.dump(obs_leds, open(save_path + 'obs_leds_{}.pkl'.format(n_recode), 'wb'))
             pickle.dump(z_actions, open(save_path + 'z_actions_{}.pkl'.format(n_recode), 'wb'))
-            # u.coordinates_heatmap_creator(path=save_path, coordinates=robots_coordinates, n_recode=n_recode)
-            # u.z_t_creator(path=save_path, n_recode=n_recode, coordinates=robots_coordinates, n_robo=e_robo, timesteps=config.steps)
+            u.get_scatter_of_actions(path=save_path, obs_actions=obs_actions)
+            u.get_scatter_of_leds(path=save_path, obs_leds=obs_leds)
+            u.coordinates_3d(path=save_path, n_recode=n_recode, coordinates=robots_coordinates, n_robo=e_robo)
+            u.z_t_creator(path=save_path, n_recode=n_recode, coordinates=robots_coordinates, n_robo=e_robo, timesteps=config.steps)
 
-            # apm = (rss, gss, bss)
-            # pickle.dump(apm, open(save_path + 'ap_material_{}.pkl'.format(n_recode), 'wb'))
-            # u.at_scatter_creator(path=save_path, n_recode=n_recode, apm=apm)
+            apm = (rss, gss, bss)
+            pickle.dump(apm, open(save_path + 'ap_material_{}.pkl'.format(n_recode), 'wb'))
+            u.at_scatter_creator(path=save_path, n_recode=n_recode, apm=apm)
 
             n_recode += 1
             env.reset()
             
-            # del robots_coordinates, episode_nodes, episode_links, apm, xs, ys, zs, rss, gss, bss, episode_actions, episode_color_counts
-            # del apm, rss, gss, bss
-            del obs_actions, obs_leds, z_actions, xs, ys, zs
+            del robots_coordinates, apm, xs, ys, zs, rss, gss, bss
             gc.collect()
 
             xs, ys, zs = [], [], []
             rss, gss, bss = [], [], []
             obs_actions, obs_leds = [], []
             z_actions = []
-            # episode_actions = []
-            # episode_color_counts = []
             # episode_nodes, episode_links = [], []
 
             if n_recode >= config.reps:

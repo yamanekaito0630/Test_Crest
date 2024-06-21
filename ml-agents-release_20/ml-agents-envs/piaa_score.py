@@ -34,11 +34,17 @@ def main(config, log_dir, n_robo, e_robo, path):
     device = torch.device('cpu')
     
     if e_robo == 1:
-        file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, config.n_at, config.eval_version)
-        # file_name = 'apps/UnderWaterDrones_IM_Round_OneRobot_At{at}'.format(at=config.n_at)
+        if config.env_name == "default":
+            file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}'.format(config.os, config.n_at, config.eval_version)
+            # file_name = 'apps/UnderWaterDrones_IM_Round_OneRobot_At{at}'.format(at=config.n_at)
+        else:
+            file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_OneRobot_At{}_V{}_{}'.format(config.os, config.n_at, config.eval_version, config.env_name)
     else:
-        file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, config.n_at, config.eval_version)
-        # file_name = 'apps/UnderWaterDrones_IM_Round_{num_robo}Robots_At{at}'.format(num_robo=e_robo, at=config.n_at)
+        if config.env_name == "default":
+            file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}'.format(config.os, e_robo, config.n_at, config.eval_version)
+            # file_name = 'apps/UnderWaterDrones_IM_Round_{num_robo}Robots_At{at}'.format(num_robo=e_robo, at=config.n_at)
+        else:
+            file_name = 'Test_Crest_App/{}/app/UnderWaterDrones_IM_Round_{}Robots_At{}_V{}_{}'.format(config.os, e_robo, config.n_at, config.eval_version, config.env_name)
 
     agent = PIAttentionAgent(
         device=device,
@@ -118,9 +124,11 @@ if __name__ == '__main__':
     if args.headless:
         d.start()
     for n_robo in args.ns_robo:
+        print("n_robo={}".format(n_robo))
         for t in args.trials:
             log_dir = 'log/at{at}/{num_robo}robo/v{version}/trial_{t}/'.format(at=args.n_at, num_robo=n_robo, version=args.version, t=t)
             for e_robo in args.es_robo:
+                print("e_robo={}".format(e_robo))
                 if args.exclude_other_envs:
                         if e_robo != n_robo:
                             continue
